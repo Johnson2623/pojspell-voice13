@@ -149,7 +149,7 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
 
 /* 本次修改：變音練習頁最下列（提示、章節、下一題）字體增加 100%。 */
 #practice .practice-quiz .practice-footer > button {
-  font-size: clamp(24px, 6.6vw, 30px) !important;
+  font-size: clamp(16.8px, 4.62vw, 21px) !important;
   line-height: 1.2;
   min-height: 58px;
   height: auto;
@@ -158,7 +158,7 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
   overflow-wrap: anywhere;
 }
 #practice .practice-quiz .practice-footer #practiceVerseSource {
-  font-size: clamp(18px, 5.3vw, 24px) !important;
+  font-size: clamp(12.6px, 3.71vw, 16.8px) !important;
   line-height: 1.2;
   white-space: normal;
   overflow-wrap: anywhere;
@@ -242,6 +242,15 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
 /* 字詞動畫：只保留七個中文選項，隱藏下方教學圖表和文字。
    保留共用 DOM 節點供「變音原則」頁使用，避免其他分頁功能損壞。 */
 #animation #animationLessonHost { display: block !important; }
+
+/* 「下一題」不可操作時，底色及邊框與「看提示」一致。 */
+#practice .practice-footer #next:disabled {
+ background:#322f28 !important;
+ border-color:var(--line) !important;
+ color:var(--text) !important;
+ opacity:1 !important;
+ cursor:default;
+}
 </style>
 <style id="animation-matched-layout">
 /* 字詞動畫：與變音原則共用選擇列、五線圖比例與文字配置。 */
@@ -559,16 +568,67 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
  }
 }
 </style>
-<style>
-/* Desktop 16:9 adaptive fit. Mobile styling remains unchanged. */
-@media (min-width: 901px) and (pointer: fine) {
-  html, body { width:100%; min-height:100%; overflow-x:hidden; }
-  body { overflow-y:hidden; }
-  main { max-width: 1250px; width:calc(100% - 28px); margin:0 auto; padding:8px 12px 6px; }
-  #lessonPanel { margin-top:0; }
+<style id="lower-poj-font-half">
+/* 手機及電腦：只有「變音原則／字詞動畫」五線圖第1線下方的白話字縮小50%。 */
+#principles #lessonContent.principles-content .syllable-labels,
+#animation #lessonContent.principles-content .syllable-labels {
+  font-size:var(--poj-display-size) !important;
 }
-</style></head><body><main>
-<div class="panel" id="lessonPanel"><div class="topbar lesson-topbar"><nav class="tabs" role="tablist" aria-label="內容區學習模式"><button role="tab" id="tab-principles" aria-controls="principles" aria-selected="false">變音原則</button><button role="tab" id="tab-animation" aria-controls="animation" aria-selected="true">字詞動畫</button><button role="tab" id="tab-practice" aria-controls="practice" aria-selected="false">變音練習</button><label class="tone-speed">速度 <select id="speed"><option value="1000">1 秒</option><option value="2000" selected>2 秒</option><option value="4000">4 秒</option><option value="6000">6 秒</option><option value="10000">10 秒</option></select></label></nav></div><section id="principles" role="tabpanel" aria-labelledby="tab-principles" hidden><div class="words" id="principlesWords" aria-label="變音原則頁選擇詞語"></div><div id="principlesLessonHost"></div></section><section id="animation" role="tabpanel" aria-labelledby="tab-animation"><div class="words" id="words" aria-label="選擇詞語"></div><div id="animationLessonHost"><div id="lessonContent"><div id="animationPojChangeRow" class="animation-poj-change-row" aria-label="變音前後白話字對照"></div><p class="poj" id="poj"></p><div id="toneGraphWrap" class="tone-graph-wrap"><svg viewBox="0 0 680 157.5" role="img" aria-labelledby="graphTitle graphDesc"><title id="graphTitle">音調變化示意圖</title><desc id="graphDesc"></desc><defs><clipPath id="plotClip"><rect x="-59" y="52" width="1208" height="300"/></clipPath></defs><g id="grid"></g><path id="original" transform="translate(87.5 -17.5) scale(.5)" fill="none" stroke="#999184" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 22"/><path id="changing" transform="translate(87.5 -17.5) scale(.5)" fill="none" stroke="#f19b4d" stroke-width="12" stroke-linecap="round"/><path id="fixed" transform="translate(257.5 -17.5) scale(.5)" fill="none" stroke="#65cdbb" stroke-width="12" stroke-linecap="round"/><g id="principlesLowerArt" hidden><use href="#original"/><use href="#changing"/><use href="#fixed"/></g></svg><span id="ruleOneGraphSample" class="rule-one-graph-sample" aria-live="polite" hidden></span></div><div class="syllable-labels" aria-label="逐音節拼寫"><span id="firstLabel"></span><span id="lastLabel"></span></div><div id="animationAddedFooter" class="animation-added-footer" aria-label="字詞動畫最下方音調與章節資訊"><div>第 3 調 → 第 2 調</div><div>馬可福音08:09</div><div>第 1 調（不變）</div></div><svg id="toneDescriptions" class="tone-labels" viewBox="0 0 680 8" role="img" aria-label="音調說明"><text id="firstTone" x="175" y="4.75" text-anchor="middle" fill="#f19b4d" font-size="12"></text><text id="verseSource" x="345" y="4.75" text-anchor="middle" fill="#aaa396" font-size="12"></text><text id="lastTone" x="515" y="4.75" text-anchor="middle" fill="#65cdbb" font-size="12"></text></svg><div id="animationMobileVerseRow" class="animation-mobile-verse-row" aria-label="聖經章節"></div></div></div></section><section id="practice" role="tabpanel" aria-labelledby="tab-practice" hidden><div class="words" id="practiceWords" aria-label="練習頁選擇詞語"></div><div class="practice-quiz"><div id="quizArea"><div class="question" id="question"></div><div class="answers" id="answers"></div><p class="feedback" id="feedback" aria-live="polite"></p><div class="controls practice-footer"><button id="hint">看提示</button><span id="practiceVerseSource" aria-label="練習詞語章節出處"></span><button class="primary" id="next" disabled>下一題 →</button></div></div><div id="result" hidden></div></div></section></div></main>
+</style><style id="animation-footer-font-plus-50">
+/* 僅字詞動畫的最下方三欄：保留文字並將原字級放大 50%。 */
+#animation .animation-added-footer{font-size:clamp(16.5px,3.75vw,24px)!important}
+@media(max-width:520px){#animation .animation-added-footer{font-size:clamp(15px,4.2vw,19.5px)!important}}
+</style><style id="principles-footer-only-removal">
+/* 共用 lessonContent 會在不同分頁移動：只在變音原則隱藏此三欄。 */
+#principles #animationAddedFooter { display:none!important; }
+#animation #animationAddedFooter { display:grid!important; }
+</style>
+<style id="animation-footer-two-row-layout">
+/* 只調整字詞動畫：音調說明在上一列，章節單獨置中下一列。 */
+#animation #lessonContent.principles-content #animationAddedFooter {
+  display:grid!important;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:auto auto!important;
+  row-gap:6px!important;
+  column-gap:8px!important;
+  align-items:center!important;
+  text-align:center!important;
+  width:100%!important;
+  padding:4px 0 12px!important;
+}
+#animation #animationAddedFooter>div:first-child {grid-column:1;grid-row:1;justify-self:center;}
+#animation #animationAddedFooter>div:nth-child(2) {grid-column:1 / -1;grid-row:2;justify-self:center;}
+#animation #animationAddedFooter>div:nth-child(3) {grid-column:2;grid-row:1;justify-self:center;}
+#animation #lessonContent.principles-content {
+  min-height:calc(var(--reference-bottom-label-top,420px) + 2.4 * var(--poj-display-size) + 105px)!important;
+}
+</style><style id="animation-footer-up-1p5-verse-height">
+/* 僅字詞動畫：音調與章節兩列整組向上移動章節列自身高度的 1.5 倍。 */
+#animation #lessonContent.principles-content #animationAddedFooter {
+ transform:translateY(calc(-1.5 * var(--animation-verse-row-height, 24px)))!important;
+}
+</style>
+<style id="desktop-one-screen-16by9">
+/* 僅桌面寬螢幕生效；原有手機 CSS 完全不動。 */
+@media (min-width: 901px) {
+ html,body { height:100%; overflow:hidden !important; }
+ body { min-height:100vh; }
+ main {
+  width:870px; max-width:calc(100vw - 28px);
+  margin:0 auto !important;
+  padding-top:10px; padding-bottom:8px !important;
+  transform:scale(var(--desktop-fit-scale,1));
+  transform-origin:top center;
+  will-change:transform;
+ }
+ /* 桌面版維持同一頁內操作，減少過大的選項、邊距。 */
+ .lesson-topbar .tabs { margin-bottom:8px !important; }
+ #lessonPanel { padding:13px 18px 10px !important; }
+ #principles #principlesWords { margin-bottom:clamp(28px,5vh,52px) !important; }
+}
+</style>
+</head><body><main>
+<div class="panel" id="lessonPanel"><div class="topbar lesson-topbar"><nav class="tabs" role="tablist" aria-label="內容區學習模式"><button role="tab" id="tab-principles" aria-controls="principles" aria-selected="false">變音原則</button><button role="tab" id="tab-animation" aria-controls="animation" aria-selected="true">字詞動畫</button><button role="tab" id="tab-practice" aria-controls="practice" aria-selected="false">變音練習</button><label class="tone-speed">速度 <select id="speed"><option value="1000">1 秒</option><option value="2000" selected>2 秒</option><option value="4000">4 秒</option><option value="6000">6 秒</option><option value="10000">10 秒</option></select></label></nav></div><section id="principles" role="tabpanel" aria-labelledby="tab-principles" hidden><div class="words" id="principlesWords" aria-label="變音原則頁選擇詞語"></div><div id="principlesLessonHost"></div></section><section id="animation" role="tabpanel" aria-labelledby="tab-animation"><div class="words" id="words" aria-label="選擇詞語"></div><div id="animationLessonHost"><div id="lessonContent"><div id="animationPojChangeRow" class="animation-poj-change-row" aria-label="變音前後白話字對照"></div><p class="poj" id="poj"></p><div id="toneGraphWrap" class="tone-graph-wrap"><svg viewBox="0 0 680 157.5" role="img" aria-labelledby="graphTitle graphDesc"><title id="graphTitle">音調變化示意圖</title><desc id="graphDesc"></desc><defs><clipPath id="plotClip"><rect x="-59" y="52" width="1208" height="300"/></clipPath></defs><g id="grid"></g><path id="original" transform="translate(87.5 -17.5) scale(.5)" fill="none" stroke="#999184" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 22"/><path id="changing" transform="translate(87.5 -17.5) scale(.5)" fill="none" stroke="#f19b4d" stroke-width="12" stroke-linecap="round"/><path id="fixed" transform="translate(257.5 -17.5) scale(.5)" fill="none" stroke="#65cdbb" stroke-width="12" stroke-linecap="round"/><g id="principlesLowerArt" hidden><use href="#original"/><use href="#changing"/><use href="#fixed"/></g></svg><span id="ruleOneGraphSample" class="rule-one-graph-sample" aria-live="polite" hidden></span></div><div class="syllable-labels" aria-label="逐音節拼寫"><span id="firstLabel"></span><span id="lastLabel"></span></div><div id="animationAddedFooter" class="animation-added-footer" aria-label="字詞動畫最下方音調與章節資訊"><div>第 3 調 → 第 2 調</div><div>馬可福音08:09</div><div>第 1 調（不變）</div></div><svg id="toneDescriptions" class="tone-labels" viewBox="0 0 680 8" role="img" aria-label="音調說明"><text id="firstTone" x="175" y="4.75" text-anchor="middle" fill="#f19b4d" font-size="12"></text><text id="verseSource" x="345" y="4.75" text-anchor="middle" fill="#aaa396" font-size="12"></text><text id="lastTone" x="515" y="4.75" text-anchor="middle" fill="#65cdbb" font-size="12"></text></svg><div id="animationMobileVerseRow" class="animation-mobile-verse-row" aria-label="聖經章節"></div></div></div></section><section id="practice" role="tabpanel" aria-labelledby="tab-practice" hidden><div class="words" id="practiceWords" aria-label="練習頁選擇詞語"></div><div class="practice-quiz"><div id="quizArea"><div class="question" id="question"></div><div class="answers" id="answers"></div><p class="feedback" id="feedback" aria-live="polite"></p><div class="controls practice-footer"><button id="hint">看提示</button><span id="practiceVerseSource" aria-label="練習詞語章節出處"></span><button class="primary" id="next">下一題 →</button></div></div><div id="result" hidden></div></div></section></div></main>
 <script>
 const __stableWidthListeners=[];
 let __lastStableViewportWidth=document.documentElement.clientWidth;
@@ -832,7 +892,18 @@ function updateMobileAnimationToneLabels(){
  }
 }
 onStableWidthResize(updateMobileAnimationToneLabels);
-function showLesson(w){if(activeMode==='animation')setAnimationPojChangeRow(w);$('poj').className='poj poj-double';$('lastLabel').textContent=activeMode==='principles'?'':w.b;$('original').setAttribute('d',w.t===4||w.t===8?'':w.t===5?roofPath(107):path(firstCurve(w)));$('fixed').setAttribute('d',fixedPath(w));$('firstTone').textContent=`第 ${w.t} 調 → 第 ${w.to} 調`;$('lastTone').textContent=`第 ${w.u} 調（不變）`;$('verseSource').textContent='馬可福音'+w.verse;$('animationMobileVerseRow').textContent='馬可福音'+w.verse;updateMobileAnimationToneLabels();$('graphDesc').textContent=`${w.h}：第一字第${w.t}調變為第${w.to}調，第二字第${w.u}調保持不變。`;paint();moveFiveStaffLinesUp();positionPrinciplesBottomLabel();play();adjustPrinciplesGap();}
+function showLesson(w){
+ // 字詞動畫底列隨每次選中的詞語更新：第一音節本調→變調；第二音節原調不變。
+ if(activeMode==='animation'){
+  const footer=$('animationAddedFooter');
+  if(footer && footer.children.length===3){
+   footer.children[0].textContent=`第 ${w.t} 調 → 第 ${w.to} 調`;
+   footer.children[1].textContent='馬可福音'+w.verse;
+   footer.children[2].textContent=`${w.b} 第 ${w.u} 調（不變）`;
+  }
+  setAnimationPojChangeRow(w);
+ }
+$('poj').className='poj poj-double';$('lastLabel').textContent=activeMode==='principles'?'':w.b;$('original').setAttribute('d',w.t===4||w.t===8?'':w.t===5?roofPath(107):path(firstCurve(w)));$('fixed').setAttribute('d',fixedPath(w));$('firstTone').textContent=`第 ${w.t} 調 → 第 ${w.to} 調`;$('lastTone').textContent=`第 ${w.u} 調（不變）`;$('verseSource').textContent='馬可福音'+w.verse;$('animationMobileVerseRow').textContent='馬可福音'+w.verse;updateMobileAnimationToneLabels();$('graphDesc').textContent=`${w.h}：第一字第${w.t}調變為第${w.to}調，第二字第${w.u}調保持不變。`;paint();moveFiveStaffLinesUp();positionPrinciplesBottomLabel();play();adjustPrinciplesGap();}
 function chooseRule(i){halt();stopRefresh();ruleSelected=i;pickRuleSample(i);p=0;tab('principles');showLesson(ruleWords[i]);scheduleRefresh()}
 function choose(i,mode=activeMode,syncQuiz=true){if(mode==='principles'){chooseRule(i);return}halt();selected=i;p=0;tab(mode);showLesson(words[i]);if(mode==='practice'){if(syncQuiz)restart(i);else if(!$('quizArea').hidden)question()}scheduleRefresh()}
 $('speed').onchange=()=>{p=0;paint();play();scheduleRefresh()};document.addEventListener('visibilitychange',()=>{if(document.hidden)halt();else{p=0;paint();play();if(!refreshTimer)scheduleRefresh()}});
@@ -849,7 +920,7 @@ function confusingAnswers(w){
 function answerMarkup(text,source){const letters=splitLetters(text),marked=accentIndex(text),index=marked>=0?marked:nucleusIndex(source);return letters.map((letter,i)=>i===index?`<span class="answer-vowel">${letter}</span>`:letter).join('')}
 function question(){
  answered=false;currentCorrect=false;selected=order[q];quizWords[selected]={...words[selected]};const w=quizWords[selected];syncWordButtons();p=0;paint();play();
- $('question').replaceChildren();const pojLine=document.createElement('div');pojLine.className='quiz-poj-line';const first=document.createElement('span');first.className='quiz-first-syllable';first.textContent=w.a;pojLine.append(first,document.createTextNode(w.separator+w.b+' → ？'));const hanziLine=document.createElement('div');hanziLine.className='quiz-hanzi-line';hanziLine.textContent=w.h;$('question').append(hanziLine,pojLine);$('practiceVerseSource').textContent='馬可福音'+w.verse;$('question').style.whiteSpace='pre-line';$('answers').replaceChildren();$('feedback').textContent='';$('next').disabled=true;$('next').textContent=q===words.length-1?'看成績 →':'下一題 →';
+ $('question').replaceChildren();const pojLine=document.createElement('div');pojLine.className='quiz-poj-line';const first=document.createElement('span');first.className='quiz-first-syllable';first.textContent=w.a;pojLine.append(first,document.createTextNode(w.separator+w.b+' → ？'));const hanziLine=document.createElement('div');hanziLine.className='quiz-hanzi-line';hanziLine.textContent=w.h;$('question').append(hanziLine,pojLine);$('practiceVerseSource').textContent='馬可福音'+w.verse;$('question').style.whiteSpace='pre-line';$('answers').replaceChildren();$('feedback').textContent='';$('next').disabled=false;$('next').textContent=q===words.length-1?'看成績 →':'下一題 →';
  const correctIndex=Math.floor(Math.random()*4),options=confusingAnswers(w);options.splice(correctIndex,0,w.out);
  for(const [index,candidate]of options.entries()){const b=document.createElement('button');b.innerHTML=answerMarkup(candidate,w.a);b.setAttribute('aria-label',candidate);b.onclick=()=>{
   if(answered)return;answered=true;currentCorrect=index===correctIndex;
@@ -858,7 +929,7 @@ function question(){
  };$('answers').append(b)}
  scheduleRefresh();
 }
-$('hint').onclick=()=>{const w=quizWords[order[q]];$('feedback').textContent=w.n};$('next').onclick=()=>{if(!answered)return;if(currentCorrect)score++;q++;if(q<words.length)question();else{$('quizArea').hidden=true;$('result').hidden=false;$('result').innerHTML=`<h2>完成了！答對 ${score} / ${words.length} 題</h2><p>回到動畫，再看看還不熟悉的變調。</p><button class="primary" id="again">再練一次</button>`;$('again').onclick=restart}};restart();choose(0);
+$('hint').onclick=()=>{const w=quizWords[order[q]];$('feedback').textContent=w.n};$('next').onclick=()=>{if(answered&&currentCorrect)score++;q++;if(q<words.length)question();else{$('quizArea').hidden=true;$('result').hidden=false;$('result').innerHTML=`<h2>完成了！答對 ${score} / ${words.length} 題</h2><p>回到動畫，再看看還不熟悉的變調。</p><button class="primary" id="again">再練一次</button>`;$('again').onclick=restart}};restart();choose(0);
 
 // 字詞動畫：僅下移五線圖下方的「白話字列」與「音調／章節列」。
 // 使用實際的「變音原則」欄位高度作為三倍位移基準。
@@ -903,33 +974,65 @@ requestAnimationFrame(alignAnimationPojHalfTabHeight);
 })();
 
 // 底部兩列採正常文流；捲動時不再更動高度或補空白。
-</script>
-<script>
-/* Desktop-only, page-height-aware sizing. No adjustments to phone or tablet UI. */
+
+// 以中間章節文字實際列高為位移基準；不隨捲動更新，避免手機頁面跳動。
 (function(){
-  const root=document.querySelector('main');
-  if(!root) return;
-  let pending=false;
-  function desktop(){return window.innerWidth>=901 && window.matchMedia('(pointer: fine)').matches;}
-  function fit(){
-    pending=false;
-    if(!desktop()) {root.style.zoom='';document.body.style.overflowY='';return;}
-    // Calculate unscaled content height after any page/tab update.
-    root.style.zoom='1';
-    const available=Math.max(300,window.innerHeight-12);
-    const unscaled=root.getBoundingClientRect().height;
-    const target=Math.max(.35,Math.min(1,available/Math.max(1,unscaled)));
-    root.style.zoom=String(target);
+ const footer=document.getElementById('animationAddedFooter');
+ const verse=footer?.children[1];
+ if(!footer||!verse)return;
+ let lastHeight=0;
+ const measure=()=>{
+  const h=verse.getBoundingClientRect().height;
+  if(h>0&&Math.abs(h-lastHeight)>0.25){
+   lastHeight=h;
+   footer.style.setProperty('--animation-verse-row-height',h+'px');
   }
-  function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>requestAnimationFrame(fit));}
-  document.querySelectorAll('[role="tab"], #principlesWords, #words, #practiceWords, #speed, #answers, #nextQuestion, #nextBtn').forEach(el=>el.addEventListener('click',schedule));
-  window.addEventListener('resize',schedule);
-  window.addEventListener('load',schedule);
-  document.addEventListener('DOMContentLoaded',schedule);
-  // Watch the three panels' visibility so any script-driven switch is fitted too.
-  const observer=new MutationObserver(records=>{if(records.some(r=>r.attributeName==='hidden' || r.attributeName==='style' && r.target.matches?.('[role="tabpanel"]')))schedule();});
-  document.querySelectorAll('[role="tabpanel"]').forEach(el=>observer.observe(el,{attributes:true,attributeFilter:['hidden','style']}));
-  schedule();
+ };
+ if(typeof ResizeObserver==='function')new ResizeObserver(measure).observe(verse);
+ requestAnimationFrame(measure);
+ onStableWidthResize(measure);
+})();
+</script>
+<script id="desktop-one-screen-fit-script">
+/* 以實際顯示分頁高度計算縮放比例；手機維持原始 100% 排版。 */
+(function(){
+ const main=document.querySelector('main');
+ const panel=document.getElementById('lessonPanel');
+ if(!main||!panel)return;
+ let pending=false;
+ function fit(){
+  pending=false;
+  if(window.innerWidth<901){
+   main.style.removeProperty('--desktop-fit-scale');
+   return;
+  }
+  main.style.setProperty('--desktop-fit-scale','1');
+  // scrollHeight 為縮放前高度；含絕對定位的內容可用 scrollHeight 算出。
+  const contentHeight=Math.max(main.scrollHeight,panel.scrollHeight+main.offsetTop+18);
+  const availableHeight=Math.max(200,window.innerHeight-18);
+  const scale=Math.max(.25,Math.min(1,availableHeight/Math.max(1,contentHeight)));
+  main.style.setProperty('--desktop-fit-scale',String(scale));
+ }
+ function scheduleFit(){
+  if(pending)return;
+  pending=true;
+  requestAnimationFrame(()=>requestAnimationFrame(fit));
+ }
+ window.addEventListener('resize',scheduleFit);
+ document.querySelectorAll('[role="tab"]').forEach(btn=>btn.addEventListener('click',()=>{
+  scheduleFit();setTimeout(scheduleFit,80);
+ }));
+ const observer=new MutationObserver(scheduleFit);
+ ['principles','animation','practice'].forEach(id=>{
+  const element=document.getElementById(id);
+  if(element)observer.observe(element,{attributes:true,attributeFilter:['hidden']});
+ });
+ if(typeof ResizeObserver==='function'){
+  new ResizeObserver(scheduleFit).observe(panel);
+ }
+ document.addEventListener('DOMContentLoaded',scheduleFit);
+ window.addEventListener('load',scheduleFit);
+ scheduleFit();
 })();
 </script>
 </body></html>
