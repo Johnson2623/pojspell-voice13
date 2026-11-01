@@ -994,27 +994,45 @@ requestAnimationFrame(alignAnimationPojHalfTabHeight);
 })();
 </script>
 <script id="desktop-one-screen-fit-script">
-/* 桌面三個分頁使用同一固定縮放基準，切換時不再隨內容高度改變寬度。 */
+/* 以實際顯示分頁高度計算縮放比例；手機維持原始 100% 排版。 */
 (function(){
  const main=document.querySelector('main');
- if(!main)return;
+ const panel=document.getElementById('lessonPanel');
+ if(!main||!panel)return;
+ let pending=false;
  function fit(){
+  pending=false;
   if(window.innerWidth<901){
    main.style.removeProperty('--desktop-fit-scale');
    return;
   }
-  // 以各分頁共同的設計高度計算比例，而非個別分頁的 scrollHeight。
-  // 這能保持「變音原則／字詞動畫／變音練習」畫面寬度完全一致。
-  const designHeight=1450;
-  const availableHeight=Math.max(240,window.innerHeight-18);
-  const viewportWidth=Math.max(280,window.innerWidth-28);
-  const scale=Math.min(1,availableHeight/designHeight,viewportWidth/870);
+  main.style.setProperty('--desktop-fit-scale','1');
+  // scrollHeight 為縮放前高度；含絕對定位的內容可用 scrollHeight 算出。
+  const contentHeight=Math.max(main.scrollHeight,panel.scrollHeight+main.offsetTop+18);
+  const availableHeight=Math.max(200,window.innerHeight-18);
+  const scale=Math.max(.25,Math.min(1,availableHeight/Math.max(1,contentHeight)));
   main.style.setProperty('--desktop-fit-scale',String(scale));
  }
- window.addEventListener('resize',fit);
- window.addEventListener('orientationchange',fit);
- document.addEventListener('DOMContentLoaded',fit);
- fit();
+ function scheduleFit(){
+  if(pending)return;
+  pending=true;
+  requestAnimationFrame(()=>requestAnimationFrame(fit));
+ }
+ window.addEventListener('resize',scheduleFit);
+ document.querySelectorAll('[role="tab"]').forEach(btn=>btn.addEventListener('click',()=>{
+  scheduleFit();setTimeout(scheduleFit,80);
+ }));
+ const observer=new MutationObserver(scheduleFit);
+ ['principles','animation','practice'].forEach(id=>{
+  const element=document.getElementById(id);
+  if(element)observer.observe(element,{attributes:true,attributeFilter:['hidden']});
+ });
+ if(typeof ResizeObserver==='function'){
+  new ResizeObserver(scheduleFit).observe(panel);
+ }
+ document.addEventListener('DOMContentLoaded',scheduleFit);
+ window.addEventListener('load',scheduleFit);
+ scheduleFit();
 })();
 </script>
 </body></html>
