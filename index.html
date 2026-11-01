@@ -887,7 +887,7 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
  body:has(#practice:not([hidden])) main{padding-top:0!important;}
  #lessonPanel:has(#practice:not([hidden])){
    height:716px!important;min-height:716px!important;
-   padding:24px 24px 0!important;
+   padding:25px 24px 0!important;
    overflow:hidden!important;
  }
  #lessonPanel:has(#practice:not([hidden])) .lesson-topbar{
@@ -906,20 +906,20 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
  }
  #practice #practiceWords>button{
    min-height:60px!important;height:60px!important;
-   font-size:23px!important;border-radius:18px!important;
+   font-size:24px!important;border-radius:18px!important;
    padding:0 4px!important;
  }
  #practice .practice-quiz{
    display:flex!important;flex-direction:column!important;
-   margin:0!important;min-height:401px!important;height:401px!important;
+   margin:0!important;min-height:400px!important;height:400px!important;
  }
  #practice #quizArea{
    position:relative!important;display:flex!important;flex:1 1 auto!important;flex-direction:column!important;
-   min-height:0!important;height:401px!important;
+   min-height:0!important;height:400px!important;
  }
  #practice #question{
    position:relative!important;top:0!important;
-   gap:10px!important;margin:16px 0 10px!important;
+   gap:10px!important;margin:16px 0 7px!important;
    padding:0!important;
  }
  #practice #question .quiz-hanzi-line{
@@ -936,7 +936,7 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
  }
  #practice .practice-quiz #answers button{
    min-height:86px!important;height:86px!important;
-   font-size:34px!important;line-height:1.05!important;
+   font-size:36px!important;line-height:1.05!important;
    padding:6px 10px!important;border-radius:16px!important;
  }
  #practice .practice-quiz .practice-footer{
@@ -962,6 +962,8 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
    font-size:14px!important;line-height:1.15!important;
    padding:0 4px!important;margin:0!important;
  }
+ /* Screenshot F uses solid mint even while the selected word is hovered. */
+ #practice #practiceWords>button[aria-pressed="true"]:hover{filter:none!important;}
  #practice #quizArea[hidden]{display:none!important;}
  #practice #result:not([hidden]){font-size:19px!important;}
 }
@@ -1259,7 +1261,7 @@ function confusingAnswers(w){
 function answerMarkup(text,source){const letters=splitLetters(text),marked=accentIndex(text),index=marked>=0?marked:nucleusIndex(source);return letters.map((letter,i)=>i===index?`<span class="answer-vowel">${letter}</span>`:letter).join('')}
 function question(){
  answered=false;currentCorrect=false;selected=order[q];quizWords[selected]={...words[selected]};const w=quizWords[selected];syncWordButtons();p=0;paint();play();
- $('question').replaceChildren();const pojLine=document.createElement('div');pojLine.className='quiz-poj-line';const first=document.createElement('span');first.className='quiz-first-syllable';first.textContent=w.a;pojLine.append(first,document.createTextNode(w.separator+w.b+' → ？'));const hanziLine=document.createElement('div');hanziLine.className='quiz-hanzi-line';hanziLine.textContent=w.h;$('question').append(hanziLine,pojLine);$('practiceVerseSource').textContent='馬可福音'+w.verse;$('question').style.whiteSpace='pre-line';$('answers').replaceChildren();$('feedback').textContent='';$('next').disabled=false;$('next').textContent=q===words.length-1?'看成績 →':'下一題 →';
+ $('question').replaceChildren();const pojLine=document.createElement('div');pojLine.className='quiz-poj-line';const first=document.createElement('span');first.className='quiz-first-syllable';first.textContent=w.a;pojLine.append(first,document.createTextNode(w.separator+w.b+(window.matchMedia('(min-width:901px)').matches?' → ?':' → ？')));const hanziLine=document.createElement('div');hanziLine.className='quiz-hanzi-line';hanziLine.textContent=w.h;$('question').append(hanziLine,pojLine);$('practiceVerseSource').textContent='馬可福音'+w.verse;$('question').style.whiteSpace='pre-line';$('answers').replaceChildren();$('feedback').textContent='';$('next').disabled=false;$('next').textContent=q===words.length-1?'看成績 →':'下一題 →';
  const correctIndex=Math.floor(Math.random()*4),options=confusingAnswers(w);options.splice(correctIndex,0,w.out);
  for(const [index,candidate]of options.entries()){const b=document.createElement('button');b.innerHTML=answerMarkup(candidate,w.a);b.setAttribute('aria-label',candidate);b.onclick=()=>{
   if(answered)return;answered=true;currentCorrect=index===correctIndex;
