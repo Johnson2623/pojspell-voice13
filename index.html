@@ -627,19 +627,6 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
  #principles #principlesWords { margin-bottom:clamp(28px,5vh,52px) !important; }
 }
 </style>
-
-<style id="desktop-match-animation-size">
-/* 電腦版三頁統一使用「字詞動畫」畫面作為外框寬、高基準。手機樣式保持不變。 */
-@media (min-width:901px){
-  main {width:870px!important;max-width:calc(100vw - 28px)!important;}
-  #lessonPanel {width:100%!important;box-sizing:border-box!important;
-    height:var(--animation-reference-panel-height,auto)!important;
-    min-height:var(--animation-reference-panel-height,0px)!important;
-    overflow:hidden!important;}
-  #principles,#animation,#practice{width:100%!important;max-width:100%!important;min-width:0!important;}
-  #principles,#practice{max-height:var(--animation-reference-content-height,none);overflow-y:auto;overflow-x:hidden;}
-}
-</style>
 </head><body><main>
 <div class="panel" id="lessonPanel"><div class="topbar lesson-topbar"><nav class="tabs" role="tablist" aria-label="內容區學習模式"><button role="tab" id="tab-principles" aria-controls="principles" aria-selected="false">變音原則</button><button role="tab" id="tab-animation" aria-controls="animation" aria-selected="true">字詞動畫</button><button role="tab" id="tab-practice" aria-controls="practice" aria-selected="false">變音練習</button><label class="tone-speed">速度 <select id="speed"><option value="1000">1 秒</option><option value="2000" selected>2 秒</option><option value="4000">4 秒</option><option value="6000">6 秒</option><option value="10000">10 秒</option></select></label></nav></div><section id="principles" role="tabpanel" aria-labelledby="tab-principles" hidden><div class="words" id="principlesWords" aria-label="變音原則頁選擇詞語"></div><div id="principlesLessonHost"></div></section><section id="animation" role="tabpanel" aria-labelledby="tab-animation"><div class="words" id="words" aria-label="選擇詞語"></div><div id="animationLessonHost"><div id="lessonContent"><div id="animationPojChangeRow" class="animation-poj-change-row" aria-label="變音前後白話字對照"></div><p class="poj" id="poj"></p><div id="toneGraphWrap" class="tone-graph-wrap"><svg viewBox="0 0 680 157.5" role="img" aria-labelledby="graphTitle graphDesc"><title id="graphTitle">音調變化示意圖</title><desc id="graphDesc"></desc><defs><clipPath id="plotClip"><rect x="-59" y="52" width="1208" height="300"/></clipPath></defs><g id="grid"></g><path id="original" transform="translate(87.5 -17.5) scale(.5)" fill="none" stroke="#999184" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 22"/><path id="changing" transform="translate(87.5 -17.5) scale(.5)" fill="none" stroke="#f19b4d" stroke-width="12" stroke-linecap="round"/><path id="fixed" transform="translate(257.5 -17.5) scale(.5)" fill="none" stroke="#65cdbb" stroke-width="12" stroke-linecap="round"/><g id="principlesLowerArt" hidden><use href="#original"/><use href="#changing"/><use href="#fixed"/></g></svg><span id="ruleOneGraphSample" class="rule-one-graph-sample" aria-live="polite" hidden></span></div><div class="syllable-labels" aria-label="逐音節拼寫"><span id="firstLabel"></span><span id="lastLabel"></span></div><div id="animationAddedFooter" class="animation-added-footer" aria-label="字詞動畫最下方音調與章節資訊"><div>第 3 調 → 第 2 調</div><div>馬可福音08:09</div><div>第 1 調（不變）</div></div><svg id="toneDescriptions" class="tone-labels" viewBox="0 0 680 8" role="img" aria-label="音調說明"><text id="firstTone" x="175" y="4.75" text-anchor="middle" fill="#f19b4d" font-size="12"></text><text id="verseSource" x="345" y="4.75" text-anchor="middle" fill="#aaa396" font-size="12"></text><text id="lastTone" x="515" y="4.75" text-anchor="middle" fill="#65cdbb" font-size="12"></text></svg><div id="animationMobileVerseRow" class="animation-mobile-verse-row" aria-label="聖經章節"></div></div></div></section><section id="practice" role="tabpanel" aria-labelledby="tab-practice" hidden><div class="words" id="practiceWords" aria-label="練習頁選擇詞語"></div><div class="practice-quiz"><div id="quizArea"><div class="question" id="question"></div><div class="answers" id="answers"></div><p class="feedback" id="feedback" aria-live="polite"></p><div class="controls practice-footer"><button id="hint">看提示</button><span id="practiceVerseSource" aria-label="練習詞語章節出處"></span><button class="primary" id="next">下一題 →</button></div></div><div id="result" hidden></div></div></section></div></main>
 <script>
@@ -1014,23 +1001,11 @@ requestAnimationFrame(alignAnimationPojHalfTabHeight);
  function fit(){
   if(window.innerWidth<901){
    main.style.removeProperty('--desktop-fit-scale');
-   document.getElementById('lessonPanel')?.style.removeProperty('--animation-reference-panel-height');
-   document.getElementById('lessonPanel')?.style.removeProperty('--animation-reference-content-height');
-   fit.referenceHeight=0;
    return;
   }
-  // 以「字詞動畫」外框原始高度作為唯一參考，而非逐頁測量。
-  const panel=document.getElementById('lessonPanel');
-  if(!panel)return;
-  if(!fit.referenceHeight){
-    const animation=document.getElementById('animation');
-    // 首次載入預設顯示字詞動畫；固定其設計尺寸。
-    fit.referenceHeight=Math.ceil(panel.scrollHeight);
-    fit.contentHeight=Math.ceil(animation?.scrollHeight||panel.scrollHeight);
-  }
-  panel.style.setProperty('--animation-reference-panel-height',fit.referenceHeight+'px');
-  panel.style.setProperty('--animation-reference-content-height',fit.contentHeight+'px');
-  const designHeight=fit.referenceHeight+20;
+  // 以各分頁共同的設計高度計算比例，而非個別分頁的 scrollHeight。
+  // 這能保持「變音原則／字詞動畫／變音練習」畫面寬度完全一致。
+  const designHeight=1450;
   const availableHeight=Math.max(240,window.innerHeight-18);
   const viewportWidth=Math.max(280,window.innerWidth-28);
   const scale=Math.min(1,availableHeight/designHeight,viewportWidth/870);
