@@ -744,11 +744,7 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
 /* E(1).png: coordinate corrections scoped exclusively to the desktop principles tab.
    Other two modes and every mobile rule remain untouched. */
 @media (min-width:901px){
-  body:has(#principles:not([hidden])) main{ padding-top:13px!important; }
-  #lessonPanel:has(#principles:not([hidden])){
-    height:753px!important; min-height:753px!important;
-    padding:24px 22px 14px 30px!important;
-  }
+
   #lessonPanel:has(#principles:not([hidden])) .lesson-topbar{margin-bottom:23px!important;}
   #lessonPanel:has(#principles:not([hidden])) .lesson-topbar .tabs{gap:7px!important;}
   #principles #principlesWords{gap:7px!important;}
@@ -884,12 +880,7 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
 /* Desktop only: align the practice screen to the supplied F(1) reference.
    Principles, word animation, and all mobile styles retain the previous version. */
 @media (min-width:901px){
- body:has(#practice:not([hidden])) main{padding-top:0!important;}
- #lessonPanel:has(#practice:not([hidden])){
-   height:716px!important;min-height:716px!important;
-   padding:25px 24px 0!important;
-   overflow:hidden!important;
- }
+
  #lessonPanel:has(#practice:not([hidden])) .lesson-topbar{
    margin:0 0 22px!important;
  }
@@ -1061,6 +1052,42 @@ main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:
     white-space:nowrap!important;
     font-size:var(--desktop-animation-poj-size,58px)!important;
   }
+}
+</style>
+
+<style id="desktop-unified-canvas-20261102">
+/* Desktop is one immutable 844 x 836 layout, fitted by one uniform scale. */
+@media(min-width:901px){
+  :root{--desktop-shot-width:844px;--desktop-shot-height:836px;}
+  html,body{width:100%;height:100%;min-height:100%;overflow:hidden;}
+  body{display:flex;align-items:flex-start;justify-content:center;margin:0;padding:0;}
+  body > main{
+    box-sizing:border-box!important;
+    width:844px!important;min-width:844px!important;max-width:844px!important;
+    flex:0 0 844px!important;
+    position:absolute!important;top:0!important;left:calc(50% - 422px)!important;
+    padding:10px 0 0!important;margin:0!important;
+    transform:scale(var(--desktop-panel-scale,1))!important;
+    transform-origin:top center!important;
+  }
+  main > #lessonPanel{
+    box-sizing:border-box!important;
+    width:844px!important;min-width:844px!important;max-width:844px!important;
+    height:836px!important;min-height:836px!important;max-height:836px!important;
+    margin:0!important;padding:22px 24px 18px!important;
+    border-radius:24px!important;overflow:hidden!important;
+  }
+  #lessonPanel > .lesson-topbar,
+  #lessonPanel > #principles,
+  #lessonPanel > #animation,
+  #lessonPanel > #practice{
+    box-sizing:border-box!important;width:100%!important;max-width:100%!important;
+    min-width:0!important;
+  }
+  #lessonPanel .lesson-topbar .tabs{width:100%!important;box-sizing:border-box!important;}
+  #lessonPanel #principlesWords,
+  #lessonPanel #words,
+  #lessonPanel #practiceWords{width:100%!important;box-sizing:border-box!important;}
 }
 </style>
 </head><body><main>
@@ -1436,8 +1463,8 @@ requestAnimationFrame(alignAnimationPojHalfTabHeight);
       document.documentElement.style.removeProperty('--desktop-panel-scale');
       return;
     }
-    const designW = 844, designH = document.querySelector('#principles:not([hidden])') ? 766 : 846;
-    const scale = Math.min(1, (window.innerWidth - 18) / designW, (window.innerHeight - (designH===766?4:14)) / designH);
+    const designW = 844, designH = 846; // identical design canvas for all three tabs
+    const scale = Math.min(1, (window.innerWidth - 18) / designW, (window.innerHeight - 14) / designH);
     document.documentElement.style.setProperty('--desktop-panel-scale', scale.toFixed(4));
   }
   window.addEventListener('resize', fitDesktopPanel);
