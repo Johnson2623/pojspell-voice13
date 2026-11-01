@@ -1,0 +1,935 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="app-version" content="random-selected-column-v4"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta name="theme-color" content="#1b1916"><meta name="description" content="看線條變化，學白話字連讀變調。七個生活詞語、慢速動畫與互動練習。"><title>白話字變調教室</title><style>
+:root{color-scheme:dark;--bg:#1b1916;--panel:#27241f;--line:#3b3730;--text:#f5f0e7;--muted:#aaa396;--orange:#f19b4d;--mint:#65cdbb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 system-ui,-apple-system,'Noto Sans',sans-serif}main{max-width:870px;margin:auto;padding:8.5px 22px 45px}header{display:flex;align-items:center;justify-content:space-between;gap:20px}h1{font-size:clamp(25px,4.8vw,36px);margin:0;font-weight:750;letter-spacing:-1px}header p{color:var(--muted);margin:8px 0 22px}.eyebrow{color:var(--mint);font-size:12px;letter-spacing:2px;margin-bottom:8px}.badge{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:5px 12px;border-radius:30px;white-space:nowrap}button,select{font:inherit;cursor:pointer;border:1px solid var(--line);color:var(--text);background:#322f28;border-radius:14px;padding:10px 18px;min-height:46px}button:hover{filter:brightness(1.13)}button:focus-visible,select:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--mint);outline-offset:4px}button:disabled{cursor:default;opacity:.6}.tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:22px}.tabs button{background:var(--panel);padding:0 15px;min-height:0;height:29.6px;line-height:1.2;border-radius:7px}.tabs button[aria-selected=true],.primary{background:var(--orange);border-color:var(--orange);color:#21180e;font-weight:700}.panel{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:24px}.words{display:flex;flex-wrap:wrap;gap:9px;font-size:16px;margin-top:-1em}.words button{border-radius:20px;font-size:16px;padding:0;min-height:0;height:23px;line-height:1.2;width:61.25px;flex-shrink:0}.words button[aria-pressed=true]{background:var(--mint);border-color:var(--mint);color:#142923}.wordtitle{text-align:center;margin:26px 0 0;font-size:42px;line-height:1.3;font-weight:550}.poj{text-align:center;color:var(--muted);font-size:21px;margin:10px 0 0;min-height:34px}.caption{text-align:center;font-size:12px;color:var(--muted);margin:0 0 4px}svg{width:100%;height:auto;display:block;overflow:visible}.controls{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}.controls label{color:var(--muted);font-size:14px}.controls select{font-size:14px;padding:8px;min-height:42px}.tag{border-radius:12px;background:#353127;font-size:18px;padding:7px 14px;color:var(--orange)}.foot{color:var(--muted);font-size:14px;margin:20px 0 0}.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin:18px 0 0}.dot{width:22px;border-top:4px solid var(--orange);display:inline-block;vertical-align:middle;margin-right:6px}.dot.grey{border-top:4px dotted #999184}.dot.green{border-color:var(--mint)}.scrub{width:100%;accent-color:var(--orange);margin:6px 0 18px;cursor:pointer}.small{font-size:13px;color:var(--muted)}h2{font-size:24px;margin:0 0 12px}h3{font-size:18px}table{width:100%;border-collapse:collapse;font-size:16px}td,th{padding:12px 6px;text-align:left;border-bottom:1px solid var(--line)}th{color:var(--muted);font-size:13px}td:first-child{color:var(--orange);font-weight:700}.ruleintro{color:var(--muted);margin-bottom:20px}.rulecards{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:22px 0}.rulecards button{padding:14px 4px;color:var(--orange)}a{color:var(--mint)}[hidden]{display:none!important}.question{font-size:24px;text-align:center;margin:28px 0 18px}.answers{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.answers button{padding:16px 5px}.answers button.correct{border-color:var(--mint);background:#244a40}.answers button.wrong{border-color:#f0a59a;background:#5d332d}.feedback{min-height:0;margin:0;color:var(--mint)}.feedback:empty{display:none}.progress{height:5px;background:var(--line);border-radius:5px;margin:14px 0}.progress div{height:100%;background:var(--mint);transition:width .3s}.sources{margin-top:24px;font-size:12px;color:var(--muted)}@media(max-width:520px){main{padding:8.5px 14px 24px}.panel{padding:18px 14px}.badge{display:none}.wordtitle{font-size:34px}.poj{font-size:18px}.words{gap:7px;font-size:15px}.words button{font-size:15px;padding:0;width:52.5px}.rulecards{grid-template-columns:repeat(3,1fr)}.controls{gap:8px}.controls button{padding:9px 14px}.tag{font-size:16px}header p{font-size:15px}.answers{grid-template-columns:repeat(4,1fr)}}
+main{padding-bottom:18px}#animation>.panel{padding-bottom:9.6px}.scrub{margin-bottom:7.2px}.controls.playback-controls{--playback-height:19.68px;min-height:var(--playback-height);gap:5.6px;line-height:1.2}.playback-controls .tag{height:var(--playback-height);padding:0 6px;display:flex;align-items:center;font-size:12px;border-radius:5px}.playback-controls label{display:flex;align-items:center;gap:4px;font-size:12px}.playback-controls select,.playback-controls button{min-height:0;height:var(--playback-height);padding:0 6px;font-size:12px;line-height:1.2;border-radius:5px}.playback-controls>div{display:flex;gap:5px}@media(max-width:520px){main{padding-bottom:9.6px}#animation>.panel{padding-bottom:7.2px}.controls.playback-controls{--playback-height:18.88px}}.poj.poj-double{font-size:33.6px}@media(max-width:520px){.poj.poj-double{font-size:28.8px}}.wordtitle.compact-title{margin-top:15.6px;line-height:.78}.poj.poj-double{margin-top:calc(6px + 1em / 3);line-height:.96;min-height:20.4px}.tone-speed{display:flex;align-items:center;justify-content:center;gap:4px;font-size:12px;line-height:1;height:18px;color:var(--muted);white-space:nowrap}.tone-speed select{font-size:12px;height:18px;min-height:0;line-height:1;padding:0 4px;border-radius:5px;max-width:106px}main{padding-bottom:0}#animation>.panel{padding-bottom:0}#lessonPanel{padding-bottom:0}#practice{margin-top:0}.practice-quiz{margin-top:0}#lessonContent{--poj-display-size:33.6px}.poj.poj-double,.syllable-labels{font-size:var(--poj-display-size)}.syllable-labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));text-align:center;line-height:1.2;margin-top:0;transform:translate(.735294%,calc(-1em / 3));color:var(--text)}@media(max-width:520px){#lessonContent{--poj-display-size:28.8px}}.topbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:center;gap:10px;margin-bottom:22px}.topbar .tabs{grid-column:span 2;min-width:0;margin-bottom:0;grid-template-columns:repeat(2,minmax(0,1fr))}.topbar .tone-speed{width:100%;min-width:0;height:29.6px;font-size:17px;justify-content:center;gap:4px;padding:0 4px;border:1px solid var(--line);border-radius:7px;background:var(--panel);color:var(--text)}.topbar .tone-speed select{min-width:0;width:100%;max-width:106px;flex:0 1 106px}.topbar .tabs button{min-width:0}.lesson-topbar{margin-top:-16px}@media(max-width:520px){.lesson-topbar{margin-top:-15px}}.changed-vowel{color:var(--orange)}.practice-quiz .question{margin-top:0}.practice-quiz .answers{margin-bottom:.5em}.answers .answer-vowel{color:var(--orange)}.practice-quiz{--practice-poj-size:24px}.practice-quiz .question,.practice-quiz .answers button{font-size:var(--practice-poj-size)}.topbar{grid-template-columns:repeat(4,minmax(0,1fr))}.topbar .tabs{grid-column:span 3;grid-template-columns:repeat(3,minmax(0,1fr))}.topbar .tabs button{padding-inline:4px}.topbar #tab-principles{white-space:nowrap;font-size:clamp(12px,3.8vw,17px);padding-inline:0}#principlesWords button{width:72px}.rule-tone-pair{display:flex;align-items:center;justify-content:center;gap:.4em}.rule-tone-symbol,.rule-tone-blank{display:inline-block;width:1.1em;height:.8em;flex:0 0 1.1em;vertical-align:middle}.rule-tone-symbol{fill:none;stroke:var(--mint);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.rule-tone-arrow{color:var(--muted);position:relative}.rule-tone-arrow .arrow-spacer{visibility:hidden}.rule-tone-arrow svg{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}:root{--rule-button-size:16px}#principlesWords button{font-size:var(--rule-button-size)}.tone-graph-wrap{position:relative}.rule-one-graph-sample{position:absolute;left:75.735294%;top:53.015873%;transform:translate(-50%,-50%);font-size:calc(8 * var(--rule-button-size));line-height:1.2;color:var(--mint);white-space:nowrap;pointer-events:none}.rule-one-graph-sample.is-changed{color:var(--orange)}@media(max-width:520px){:root{--rule-button-size:15px}}#lessonContent.principles-content .tone-labels{display:none}.rule-target-symbol{display:inline-flex;align-items:center}.rule-target-symbol .rule-tone-symbol{stroke:var(--orange)}.poj.poj-double.rule-tone-pair.is-large{font-size:calc(var(--poj-display-size) * 1.5)}#lessonContent.principles-content{position:relative}#lessonContent.principles-content .syllable-labels{margin-bottom:0;font-size:calc(var(--poj-display-size) * 2);position:absolute;left:0;right:0;transform:none;pointer-events:none}.rule-tone-pair.is-raised{transform:translateY(calc(-1.2 * var(--rule-button-size)))}.rule-tone-pair.is-lowered{transform:translateY(calc(1.2 * var(--rule-button-size)))}.rule-tone-pair.is-raised-small{transform:translateY(calc(-1.5 * var(--rule-button-size)))}.poj.poj-double.rule-tone-pair.is-double{font-size:calc(var(--poj-display-size) * 2)}#principles .rule-tone-pair{font-size:calc(var(--poj-display-size) * 2)}.rule-tone-pair.is-double{transform:translateY(calc(-1.5 * var(--rule-button-size)))}#principlesWords{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));width:100%}#principlesWords button{width:100%;min-width:0}#words{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));width:100%}#words button{width:100%;min-width:0}#practiceWords{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));width:100%}#practiceWords button{width:100%;min-width:0}.practice-quiz .controls button{height:29.6px;min-height:0;padding:0 14px;line-height:1.2}.practice-quiz .practice-footer{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px;align-items:center}.practice-footer #practiceVerseSource{text-align:center;color:var(--muted);font-size:clamp(10px,2.8vw,12px);line-height:1.2;white-space:nowrap}.practice-footer button{white-space:nowrap}@media(max-width:380px){.practice-quiz .practice-footer button{padding-inline:8px}}#practice .practice-quiz .question{position:relative;top:calc(17px * 2 / 3)}#practice .practice-quiz .answers button{font-size:calc(var(--practice-poj-size) * 1.5)}
+/* iPhone 15 Plus portrait / compact-screen responsive layout */
+html{width:100%;overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{width:100%;min-width:0;overflow-x:hidden}
+main,.panel,.topbar,.tabs,.tone-graph-wrap,.practice-quiz{min-width:0;max-width:100%}
+#toneGraphWrap svg,#toneDescriptions{max-width:100%}
+@media (max-width:600px){
+  main{width:100%;padding:10px 10px calc(18px + env(safe-area-inset-bottom,0px))}
+  #lessonPanel{padding:13px 10px 10px;border-radius:16px}
+  .topbar{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:12px}
+  .topbar .tabs{grid-column:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;width:100%;min-width:0}
+  .topbar .tabs button,.topbar #tab-principles{width:100%;min-width:0;height:42px;min-height:42px;padding:3px 2px;white-space:nowrap;font-size:clamp(12px,3.6vw,16px);line-height:1.25;overflow:hidden}
+  .topbar .tone-speed{grid-column:1;justify-content:center;width:100%;height:36px;min-height:36px;font-size:15px}
+  .topbar .tone-speed select{flex:0 1 112px;font-size:14px;height:28px;max-width:112px}
+  .lesson-topbar{margin-top:0}
+  #words,#principlesWords,#practiceWords{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;width:100%;margin-top:0}
+  #words button,#principlesWords button,#practiceWords button{width:100%;min-width:0;height:38px;min-height:38px;padding:2px 3px;font-size:clamp(13px,3.8vw,17px);line-height:1.2;border-radius:10px}
+  #lessonContent{--poj-display-size:clamp(22px,7vw,30px)}
+  .poj.poj-double{max-width:100%;overflow-wrap:anywhere}
+  .wordtitle{font-size:clamp(27px,8vw,36px)}
+  .tone-graph-wrap{width:100%;overflow:visible}
+  .tone-graph-wrap svg{display:block;width:100%;height:auto}
+  .syllable-labels{grid-template-columns:repeat(2,minmax(0,1fr));max-width:100%;overflow-wrap:anywhere}
+  .practice-quiz{--practice-poj-size:clamp(18px,5vw,23px)}
+  .practice-quiz .question{overflow-wrap:anywhere;line-height:1.4}
+  .practice-quiz .answers{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #practice .practice-quiz .answers button{min-width:0;min-height:56px;padding:8px 3px;font-size:clamp(21px,6vw,30px);overflow-wrap:anywhere}
+  .practice-quiz .practice-footer{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);gap:5px}
+  .practice-quiz .practice-footer button{font-size:clamp(12px,3.4vw,15px);padding:0 5px;min-width:0;min-height:40px;height:auto;white-space:normal}
+  .practice-footer #practiceVerseSource{font-size:clamp(9px,2.65vw,12px);white-space:normal;overflow-wrap:anywhere}
+  #practice .practice-quiz .question{top:0;margin:18px 0}
+  .rulecards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  table{font-size:14px}td,th{padding:8px 4px}
+}
+@media (max-width:360px){#words,#principlesWords,#practiceWords{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* 2026-10-29: iPhone 15 Plus portrait (430 CSS px), 95% viewport width. */
+@media (max-width: 600px) and (orientation: portrait) {
+  html,body{width:100%;max-width:100%;margin:0;overflow-x:clip}
+  body{font-size:16px}
+  main{width:95%;max-width:95%;margin:0 auto;padding:7px 0 max(16px,env(safe-area-inset-bottom,0px))}
+  #lessonPanel{width:100%;max-width:100%;padding:12px 9px 14px;margin:0 auto;border-radius:14px}
+  #principles,#animation,#practice,#lessonContent,#principlesLessonHost,#animationLessonHost,
+  .practice-quiz,#quizArea,.tone-graph-wrap{max-width:100%;min-width:0}
+  .topbar{width:100%;display:grid;grid-template-columns:minmax(0,1fr);gap:7px;margin:0 0 10px}
+  .topbar .tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;grid-column:1;margin:0}
+  .topbar .tabs button{width:100%;min-width:0;height:43px;min-height:43px;padding:4px 1px;font-size:clamp(13px,3.55vw,16px);white-space:nowrap}
+  .topbar .tone-speed{grid-column:1;height:38px;min-height:38px;font-size:15px}
+  .topbar .tone-speed select{width:auto;min-width:100px;max-width:125px;height:30px;font-size:15px}
+  #words,#principlesWords,#practiceWords{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;width:100%;max-width:100%}
+  #words button,#principlesWords button,#practiceWords button{width:100%;min-width:0;min-height:42px;height:auto;padding:6px 1px;font-size:clamp(13px,3.6vw,16px);white-space:normal;overflow-wrap:anywhere}
+  #lessonContent{--poj-display-size:clamp(22px,6.5vw,29px)}
+  #principles .rule-tone-pair{font-size:clamp(34px,12vw,52px)}
+  .rule-one-graph-sample{font-size:clamp(36px,19vw,82px)}
+  .poj,.poj.poj-double,.syllable-labels,.question{max-width:100%;overflow-wrap:anywhere}
+  .tone-graph-wrap svg,#toneDescriptions{display:block;width:100%;height:auto;max-width:100%}
+  .practice-quiz .answers{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #practice .practice-quiz .answers button{min-width:0;max-width:100%;font-size:clamp(19px,6vw,27px);padding:8px 2px;overflow-wrap:anywhere}
+  .practice-quiz .practice-footer{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);gap:5px}
+  .practice-quiz .practice-footer button{min-height:42px;height:auto;padding:4px 2px;white-space:normal;font-size:clamp(12px,3.3vw,15px)}
+  #practiceVerseSource{min-width:0;max-width:100%;font-size:clamp(10px,2.5vw,12px);white-space:normal;overflow-wrap:anywhere}
+  .controls{max-width:100%}
+  .controls.playback-controls{gap:6px}
+  .playback-controls>div{min-width:0;max-width:100%;flex-wrap:wrap}
+  button,select{touch-action:manipulation}
+}
+
+/* Navigation: row one = two tabs; row two = practice tab and speed (50% each). */
+.lesson-topbar{display:block!important;width:100%;margin-top:0}
+.lesson-topbar .tabs{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:7px!important;width:100%!important;margin:0 0 12px!important;align-items:stretch}
+.lesson-topbar .tabs>button{width:100%!important;min-width:0!important;max-width:100%!important;height:44px!important;min-height:44px!important;font-size:clamp(13px,3.7vw,17px)!important;padding:4px 3px!important;box-sizing:border-box}
+.lesson-topbar .tabs>.tone-speed{grid-column:2;grid-row:2;display:flex!important;align-items:center!important;justify-content:center!important;gap:6px;width:100%!important;height:44px!important;min-height:44px!important;margin:0!important;padding:3px 5px!important;border:1px solid var(--line);border-radius:8px;box-sizing:border-box;font-size:clamp(13px,3.7vw,17px);white-space:nowrap}
+.lesson-topbar .tabs>.tone-speed select{width:auto!important;max-width:55%!important;min-width:0!important;flex:1 1 auto!important;height:33px!important;font-size:clamp(12px,3.5vw,16px)!important}
+.lesson-topbar #tab-principles{grid-column:1;grid-row:1}
+.lesson-topbar #tab-animation{grid-column:2;grid-row:1}
+.lesson-topbar #tab-practice{grid-column:1;grid-row:2}
+@media(min-width:601px){.lesson-topbar .tabs{max-width:100%}.lesson-topbar .tabs>.tone-speed select{max-width:150px!important}}
+
+/* 2026-10-30: Seven tone-change choices in two full-width rows (4 + 3). */
+#principlesWords{
+  display:grid!important;
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  gap:7px!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin-top:0;
+  margin-bottom:10px;
+}
+#principlesWords>button{
+  grid-column:span 3;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box;
+  white-space:nowrap;
+  font-size:clamp(13px,3.6vw,17px);
+}
+#principlesWords>button:nth-child(n+5){grid-column:span 4}
+@media(max-width:600px){
+  #principlesWords>button{min-height:42px;padding:6px 2px}
+}
+
+/* 變音原則：第一排四欄、第二排三欄，依按鈕順序固定位置 */
+#principles #principlesWords{display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;gap:7px!important;width:100%!important;max-width:100%!important}
+#principles #principlesWords>button{width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box;white-space:nowrap;grid-column:span 3!important;grid-row:1}
+#principles #principlesWords>button:nth-child(n+5):nth-child(-n+7){grid-column:span 4!important;grid-row:2}
+
+/* 字詞動畫與變音練習：比照變音原則，七個選項分成四欄＋三欄。 */
+#animation #words, #practice #practiceWords{
+  display:grid!important;
+  grid-template-columns:repeat(12,minmax(0,1fr))!important;
+  gap:7px!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin-bottom:10px;
+}
+#animation #words>button, #practice #practiceWords>button{
+  grid-column:span 3!important;
+  grid-row:1;
+  width:100%!important;
+  min-width:0!important;
+  max-width:100%!important;
+  box-sizing:border-box;
+  min-height:42px;
+  height:auto;
+  padding:6px 2px;
+  font-size:clamp(13px,3.6vw,17px);
+}
+#animation #words>button:nth-child(n+5):nth-child(-n+7),
+#practice #practiceWords>button:nth-child(n+5):nth-child(-n+7){
+  grid-column:span 4!important;
+  grid-row:2;
+}
+
+/* 變音練習：白話字一行、漢字另起置中；第一音節採用已選取頁籤的橘色。 */
+#practice #question{display:flex;flex-direction:column;align-items:stretch;gap:8px;text-align:center;white-space:normal!important;max-width:100%;}
+#practice #question .quiz-poj-line{display:block;white-space:nowrap;max-width:100%;font-size:clamp(16px,5vw,26px);line-height:1.3;letter-spacing:0;overflow:visible;}
+#practice #question .quiz-first-syllable{color:var(--orange);}
+#practice #question .quiz-hanzi-line{display:block;width:100%;text-align:center;font-size:clamp(21px,6vw,32px);line-height:1.35;color:var(--text);}
+
+/* 本版本：練習題中文字在上，字體 +50%；主白話字 +100%；四個答案 +50%。 */
+#practice #question .quiz-hanzi-line {font-size:clamp(31.5px,9vw,48px);line-height:1.35;}
+#practice #question .quiz-poj-line {font-size:clamp(32px,10vw,52px);line-height:1.2;white-space:normal;overflow-wrap:anywhere;}
+#practice .practice-quiz #answers button {font-size:clamp(28.5px,9vw,40.5px);line-height:1.3;min-width:0;min-height:56px;overflow-wrap:anywhere;}
+#practice .practice-quiz #answers {grid-template-columns:repeat(2,minmax(0,1fr));}
+
+/* 本次修改：變音練習頁最下列（提示、章節、下一題）字體增加 100%。 */
+#practice .practice-quiz .practice-footer > button {
+  font-size: clamp(24px, 6.6vw, 30px) !important;
+  line-height: 1.2;
+  min-height: 58px;
+  height: auto;
+  padding: 8px 2px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#practice .practice-quiz .practice-footer #practiceVerseSource {
+  font-size: clamp(18px, 5.3vw, 24px) !important;
+  line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+#practice .practice-quiz .practice-footer {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+}
+
+
+/* 本次指定：三個分頁共用最上面四列的所有文字放大 50%。
+   第 1、2 列為導覽及速度；第 3、4 列為四欄與三欄選項。
+   下方主內容、作答選項與底列不受影響。 */
+.lesson-topbar .tabs > button,
+.lesson-topbar #tab-principles {
+  font-size:clamp(19.5px,5.55vw,25.5px)!important;
+  min-height:60px!important;
+  height:auto!important;
+  line-height:1.2!important;
+  white-space:normal!important;
+  overflow-wrap:break-word;
+}
+.lesson-topbar .tabs > .tone-speed {
+  font-size:clamp(19.5px,5.55vw,25.5px)!important;
+  min-height:60px!important;
+  height:auto!important;
+  line-height:1.2!important;
+}
+.lesson-topbar .tabs > .tone-speed select {
+  font-size:clamp(18px,5.25vw,24px)!important;
+  height:42px!important;
+  min-height:42px!important;
+  max-width:63%!important;
+}
+#principles #principlesWords > button,
+#animation #words > button,
+#practice #practiceWords > button {
+  font-size:clamp(19.5px,5.4vw,25.5px)!important;
+  min-height:60px!important;
+  height:auto!important;
+  padding:8px 2px!important;
+  line-height:1.2!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere;
+}
+
+
+/* 僅變音原則：增加第二列變調按鈕至五線圖之間的垂直留白。
+   不縮放、不位移五線圖與其下方內容，避免遮擋及互動失效。 */
+#principles #principlesWords{
+  margin-bottom:clamp(70px,17vw,105px)!important;
+}
+
+/* 變音原則：五線圖（含第 5 線）和其下全部內容向下移動。
+   以前四列變調按鈕的最小列高 60px 計，增加 1.5 列 = 90px；
+   使用正常文流間距，不以 transform 移動，避免覆蓋其他控件。 */
+#principles #principlesLessonHost {
+  margin-top: 0 !important;
+}
+
+/* 只移動「變音原則」按鈕列下方的左圖形、箭頭及右圖形，
+   不影響各圖形既有的變調 transform 動畫。 */
+/* 只將變音原則第二排按鈕下的左圖形、箭頭、右圖形整組再下移0.2列（12px），累計下移0.7列（42px），位置改成 +27px。 */
+#principles #poj.rule-tone-pair { position:relative; top:27px; }
+
+/* 變音原則：僅將上方左右音調圖形與中間箭頭各放大 50%，保留整組既有位置。 */
+#principles #poj.rule-tone-pair > .rule-tone-symbol,
+#principles #poj.rule-tone-pair > .rule-tone-blank,
+#principles #poj.rule-tone-pair > .rule-target-symbol {
+  scale: 1.5;
+  transform-origin: center center;
+}
+/* 只將中間箭頭縮小至上一版本的 50%，中心位置不變。 */
+#principles #poj.rule-tone-pair > .rule-tone-arrow {
+  scale: .75;
+  transform-origin: center center;
+}
+
+/* 字詞動畫：只保留七個中文選項，隱藏下方教學圖表和文字。
+   保留共用 DOM 節點供「變音原則」頁使用，避免其他分頁功能損壞。 */
+#animation #animationLessonHost { display: block !important; }
+</style>
+<style id="animation-matched-layout">
+/* 字詞動畫：與變音原則共用選擇列、五線圖比例與文字配置。 */
+#animation #words{
+ display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;
+ gap:7px!important;align-items:stretch;width:100%!important;
+}
+#animation #words button{grid-column:span 3!important;width:100%!important;min-width:0!important;min-height:60px!important;box-sizing:border-box}
+#animation #words button:nth-child(n+5){grid-column:span 4!important}
+#lessonContent.animation-matched-content{position:relative;min-width:0;width:100%}
+#lessonContent.animation-matched-content>.poj{
+ display:flex;align-items:center;justify-content:center;
+ width:100%;min-height:90px;line-height:1.15;
+ margin:0 auto 12px;font-size:clamp(27px,7.5vw,50px);
+ text-align:center;overflow-wrap:anywhere
+}
+#lessonContent.animation-matched-content .tone-graph-wrap{width:100%;position:relative;margin:0}
+#lessonContent.animation-matched-content .tone-graph-wrap>svg{width:100%;height:auto;display:block;overflow:visible}
+#lessonContent.animation-matched-content .syllable-labels{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ width:100%;text-align:center;
+ font-size:clamp(25px,7vw,43px);line-height:1.2;transform:none;
+ margin:calc(3 * var(--animation-tab-row-height, 60px)) auto 0
+}
+#lessonContent.animation-matched-content .tone-labels{width:100%}
+@media(max-width:520px){
+ #animation #words{gap:6px!important}
+ #animation #words button{min-height:52px!important;padding:6px 2px!important}
+ #lessonContent.animation-matched-content>.poj{min-height:70px;margin-bottom:9px}
+}
+</style>
+
+<style id="animation-rows-match-principles">
+/* 第二列為共用導覽列，保持既有位置；第三、四列與變音原則完全使用相同格線和高度。 */
+#animation #words{
+ display:grid!important;
+ grid-template-columns:repeat(12,minmax(0,1fr))!important;
+ grid-template-rows:repeat(2,minmax(60px,auto))!important;
+ gap:7px!important;
+ width:100%!important;
+ max-width:100%!important;
+ margin-top:0!important;
+ margin-bottom:10px!important;
+ align-items:stretch!important;
+}
+#animation #words>button{
+ grid-column:span 3!important;
+ grid-row:1!important;
+ min-width:0!important;
+ width:100%!important;
+ height:100%!important;
+ min-height:60px!important;
+ padding:8px 2px!important;
+ font-size:clamp(19.5px,5.4vw,25.5px)!important;
+ line-height:1.2!important;
+ white-space:normal!important;
+ box-sizing:border-box!important;
+}
+#animation #words>button:nth-child(n+5):nth-child(-n+7){grid-column:span 4!important;grid-row:2!important}
+</style>
+
+<style id="practice-rows-match-principles">
+/* 第二列共用導覽和速度控制，保持原位；第三、四列與變音原則同尺寸與間隔。 */
+#practice #practiceWords{
+ display:grid!important;
+ grid-template-columns:repeat(12,minmax(0,1fr))!important;
+ grid-template-rows:repeat(2,minmax(60px,auto))!important;
+ gap:7px!important;
+ width:100%!important;
+ max-width:100%!important;
+ margin-top:0!important;
+ margin-bottom:10px!important;
+ align-items:stretch!important;
+}
+#practice #practiceWords>button{
+ grid-column:span 3!important;
+ grid-row:1!important;
+ min-width:0!important;
+ width:100%!important;
+ height:100%!important;
+ min-height:60px!important;
+ padding:8px 2px!important;
+ font-size:clamp(19.5px,5.4vw,25.5px)!important;
+ line-height:1.2!important;
+ white-space:normal!important;
+ box-sizing:border-box!important;
+}
+#practice #practiceWords>button:nth-child(n+5):nth-child(-n+7){
+ grid-column:span 4!important;
+ grid-row:2!important;
+}
+</style>
+<style id="staff-alignment-fix">
+#lessonContent.animation-matched-content #toneGraphWrap {
+  transform:translateY(var(--animation-staff-offset,0px))!important;
+}
+</style><style id="animation-top-words-down">
+/* 只移動字詞動畫第5線上方的左、中、右白話字整列；不影響五線圖座標 */
+#lessonContent.animation-matched-content > #poj {
+  position:relative;
+  top:var(--animation-poj-down,30px);
+}
+</style>
+<style id="matched-lower-poj-only">
+#lessonContent.animation-matched-content .syllable-labels {font-size:57.6px!important;position:absolute!important;top:var(--matched-lower-top,0px)!important;left:0!important;right:0!important;margin:0!important;transform:none!important}
+</style>
+<style id="animation-bottom-three-sizes">
+/* 字詞動畫最下列：左、中、右三欄的實際螢幕字級。SVG 會隨寬度縮放，故由 JS 校準。 */
+#lessonContent.animation-matched-content #toneDescriptions {overflow:visible;}
+#lessonContent.animation-matched-content #firstTone {font-size:var(--animation-bottom-left-svg-size,48px)!important;}
+#lessonContent.animation-matched-content #verseSource {font-size:var(--animation-bottom-middle-svg-size,38px)!important;}
+#lessonContent.animation-matched-content #lastTone {font-size:var(--animation-bottom-right-svg-size,48px)!important;}
+/* 最下方左右音調說明欄：分別水平移動 28.38 CSS px；中間章節不動。 */
+#lessonContent.animation-matched-content #firstTone {transform:translateX(-28.38px)!important;}
+#lessonContent.animation-matched-content #lastTone {transform:translateX(28.38px)!important;}
+</style>
+<style id="animation-bottom-two-rows-separated">
+/* 手機與桌面共用：最下方說明列置於白話字列之後，避免重疊。 */
+#lessonContent.animation-matched-content #toneDescriptions {
+ position:relative;
+ transform:translateY(var(--animation-footer-drop,0px))!important;
+ overflow:visible;
+}
+#lessonContent.animation-matched-content .syllable-labels {z-index:1;}
+</style>
+
+<style id="unified-responsive-layout">
+/* 三頁共享同一組欄位尺寸，不更換原有配色、字體和功能。 */
+:root{--shared-word-row-height:60px;--shared-word-gap:7px}
+#principles #principlesWords,#animation #words,#practice #practiceWords{
+ display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr))!important;
+ grid-template-rows:repeat(2,var(--shared-word-row-height))!important;
+ gap:var(--shared-word-gap)!important;margin-top:0!important;margin-bottom:10px!important;
+ align-items:stretch!important;width:100%!important;
+}
+#principles #principlesWords>button,#animation #words>button,#practice #practiceWords>button{
+ min-height:0!important;height:100%!important;width:100%!important;
+ padding:6px 2px!important;line-height:1.2!important;
+ grid-row:1!important;grid-column:span 3!important;
+}
+#principles #principlesWords>button:nth-child(n+5),
+#animation #words>button:nth-child(n+5),
+#practice #practiceWords>button:nth-child(n+5){grid-row:2!important;grid-column:span 4!important}
+/* 消除舊版絕對定位與逐次補償高度；由容器自己撐開。 */
+#lessonContent.animation-matched-content{padding-bottom:18px!important}
+#lessonContent.animation-matched-content .syllable-labels{
+ position:relative!important;inset:auto!important;top:auto!important;left:auto!important;right:auto!important;
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ margin:16px auto 0!important;transform:none!important;font-size:57.6px!important;
+ line-height:1.2!important;min-height:1.2em!important;z-index:auto!important;
+}
+#lessonContent.animation-matched-content #toneDescriptions{
+ position:relative!important;display:block!important;
+ margin:12px 0 0!important;transform:none!important;
+ min-height:35px!important;overflow:visible!important;
+}
+#lessonContent.animation-matched-content #toneGraphWrap{transform:none!important}
+/* 字詞動畫：五線上方左白話字、箭頭、右白話字在既有 0.2 列基礎上再下移 2 列；累計 2.2 列。 */
+#lessonContent.animation-matched-content>.poj{top:0!important;transform:translateY(calc(var(--shared-word-row-height) * 2.2))!important}
+@media(max-width:520px){
+ :root{--shared-word-row-height:60px}
+ #principles #principlesWords>button,#animation #words>button,#practice #practiceWords>button{
+  font-size:clamp(15px,4.6vw,20px)!important;
+ }
+ #lessonContent.animation-matched-content .syllable-labels{font-size:57.6px!important}
+}
+</style>
+<style id="animation-content-below-first-line-up-1p5-row">
+/* 僅字詞動畫：第1線下方的兩音節白話字及底部音調／章節說明累計上移 3 列（180px）。
+   以調整文流上方間距的方式移動，讓兩列維持相對距離並避免額外空白。 */
+#lessonContent.animation-matched-content .syllable-labels {
+  margin-top:calc(16px - 3 * var(--shared-word-row-height))!important;
+}
+</style>
+
+<style id="animation-mobile-verse-separate-row">
+/* 僅手機版字詞動畫：中間章節改至最下方新增列，左右音調保留原列。 */
+.animation-mobile-verse-row{display:none}
+@media(max-width:520px){
+ #lessonContent.animation-matched-content #verseSource{display:none!important}
+ #lessonContent.animation-matched-content .animation-mobile-verse-row{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;min-height:36px;margin:8px auto 0;
+  color:#aaa396;font-size:22.79px;line-height:1.3;text-align:center;
+  position:relative;transform:none;white-space:nowrap;
+ }
+}
+</style>
+<style id="reference-S-to-T-exact-layout">
+/* S 圖為基準：字詞動畫底部不再使用舊的負 margin、放大的浮動音節與額外位移 */
+#animation #lessonContent.principles-content {position:relative!important;padding-bottom:18px!important}
+#animation #lessonContent.principles-content > #poj.rule-tone-pair {
+ position:relative!important;top:27px!important;transform:none!important;
+ width:100%!important;margin:0 auto clamp(13px,1.65vw,17px)!important;min-height:clamp(50px,6.2vw,65px)!important;height:auto!important;
+ display:flex!important;align-items:center!important;justify-content:center!important;
+}
+#animation #poj.rule-tone-pair > .rule-tone-symbol,
+#animation #poj.rule-tone-pair > .rule-tone-blank,
+#animation #poj.rule-tone-pair > .rule-target-symbol{scale:1.5;transform-origin:center center}
+#animation #poj.rule-tone-pair > .rule-tone-arrow{scale:.75;transform-origin:center center}
+#animation #lessonContent.principles-content #toneGraphWrap {
+ transform:none!important;position:relative!important;
+ margin:27px 0 0!important;width:100%!important;
+}
+#animation #toneGraphWrap > svg{display:block;width:100%;height:auto;overflow:visible}
+#animation #lessonContent.principles-content .syllable-labels {
+ position:absolute!important;left:0!important;right:0!important;top:var(--reference-bottom-label-top,420px)!important;
+ inset-block-end:auto!important;margin:0!important;transform:none!important;
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ font-size:calc(var(--poj-display-size) * 2)!important;line-height:1.2!important;pointer-events:none!important;
+}
+#animation #lessonContent.principles-content #lastLabel {visibility:hidden!important}
+#animation #lessonContent.principles-content #toneDescriptions,
+#animation #animationMobileVerseRow{display:none!important}
+#animation .rule-one-graph-sample {font-size:var(--animation-sample-fit,calc(8 * var(--rule-button-size)))!important;white-space:nowrap!important}
+
+</style>
+<style id="animation-tone-triplet-same-size-as-principles">
+/* 三個圖形沿用變音原則的相同 em 基準與縮放比例，僅影響字詞動畫。 */
+#animation #lessonContent.principles-content > #poj.rule-tone-pair {
+  font-size:calc(var(--poj-display-size) * 2)!important;
+}
+@media (max-width:600px){
+  #animation #lessonContent.principles-content > #poj.rule-tone-pair {
+    font-size:clamp(34px,12vw,52px)!important;
+  }
+}
+#animation #poj.rule-tone-pair > .rule-tone-symbol,
+#animation #poj.rule-tone-pair > .rule-tone-blank,
+#animation #poj.rule-tone-pair > .rule-target-symbol {
+  scale:1.5!important;transform-origin:center center;
+}
+#animation #poj.rule-tone-pair > .rule-tone-arrow {
+  scale:.75!important;transform-origin:center center;
+}
+</style>
+<style id="animation-added-footer-style">
+#animation .animation-added-footer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:0;align-items:center;text-align:center;margin-top:14px;padding:8px 0 10px;box-sizing:border-box;color:#aaa396;font-size:clamp(11px,2.5vw,16px);line-height:1.45}
+#animation .animation-added-footer>div:first-child{color:#f19b4d}
+#animation .animation-added-footer>div:last-child{color:#65cdbb}
+#animation .animation-added-footer>div{min-width:0;overflow-wrap:anywhere}
+@media(max-width:520px){#animation .animation-added-footer{font-size:clamp(10px,2.8vw,13px);gap:3px;margin-top:10px;padding-bottom:12px}}
+</style>
+<style id="footer-after-bottom-poj-row">
+/* 字詞動畫的最下方白話字採絕對定位。預留其實際列高，
+   讓新增的三欄說明確實排列在白話字下一列，而不是覆蓋在白話字上方。 */
+#animation #lessonContent.principles-content {
+  min-height:calc(var(--reference-bottom-label-top, 420px) + 2.4 * var(--poj-display-size) + 12px)!important;
+}
+#animation #animationAddedFooter {
+  position:relative!important;
+  clear:both;
+  margin-top:12px!important;
+}
+</style>
+<style id="animation-footer-final-anchoring">
+#animation #lessonContent.principles-content{position:relative!important;
+ min-height:calc(var(--reference-bottom-label-top,420px) + 2.4 * var(--poj-display-size) + 50px)!important;
+}
+#animation #lessonContent.principles-content #animationAddedFooter{
+ position:absolute!important;left:0!important;right:0!important;
+ top:calc(var(--reference-bottom-label-top,420px) + 2.4 * var(--poj-display-size) + 8px)!important;
+ margin:0!important;transform:none!important;clear:none!important;
+ display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+}
+</style><style id="animation-poj-change-row-style">
+#animation #animationPojChangeRow{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:.32em;
+  flex-wrap:wrap;
+  min-width:0;
+  width:100%;
+  padding:8px 0 12px;
+  text-align:center;
+  font-size:calc(2 * var(--animation-tab-font-size,16px));
+  font-weight:700;
+  line-height:1.25;
+  overflow-wrap:anywhere;
+}
+#animation #animationPojChangeRow .poj-change-part{min-width:0;white-space:normal}
+#animation #animationPojChangeRow .poj-change-arrow{flex:none;color:var(--muted,#aaa396)}
+#animation #animationPojChangeRow .poj-change-original .poj-nucleus{color:var(--animation-word-button-color,#65cdbb)}
+#animation #animationPojChangeRow .poj-change-result .poj-nucleus{color:var(--animation-tab-button-color,#f19b4d)}
+#principles #animationPojChangeRow,#practice #animationPojChangeRow{display:none!important}
+
+/* 手機版：改成兩列白話字。第一列為「變音前白話字＋→」，第二列為「變音後白話字」。
+   兩列共用同一個字首對齊欄位，讓上下字母垂直對齊。 */
+@media (max-width:600px){
+  #animation #animationPojChangeRow{
+    display:grid;
+    grid-template-columns:max-content max-content;
+    grid-template-areas:
+      "orig arrow"
+      "result blank";
+    justify-content:center;
+    align-items:baseline;
+    column-gap:.30em;
+    row-gap:.08em;
+    padding:6px 0 10px;
+    width:100%;
+  }
+  #animation #animationPojChangeRow .poj-change-original{grid-area:orig;justify-self:start;text-align:left;}
+  #animation #animationPojChangeRow .poj-change-arrow{grid-area:arrow;justify-self:start;align-self:center;}
+  #animation #animationPojChangeRow .poj-change-result{grid-area:result;justify-self:start;text-align:left;}
+  #animation #animationPojChangeRow .poj-change-spacer{grid-area:blank;visibility:hidden;pointer-events:none;user-select:none;}
+}
+</style>
+<style id="animation-mobile-triplet-up-point-two">
+/* 手機版字詞動畫：三個音調圖形及箭頭整列上移 0.2 個 60px 欄位高度（12px）。 */
+@media(max-width:600px){
+ #animation #lessonContent.principles-content > #poj.rule-tone-pair{
+  top:calc(27px - 0.2 * var(--shared-word-row-height,60px))!important;
+ }
+}
+</style>
+<style>
+/* Desktop 16:9 adaptive fit. Mobile styling remains unchanged. */
+@media (min-width: 901px) and (pointer: fine) {
+  html, body { width:100%; min-height:100%; overflow-x:hidden; }
+  body { overflow-y:hidden; }
+  main { max-width: 1250px; width:calc(100% - 28px); margin:0 auto; padding:8px 12px 6px; }
+  #lessonPanel { margin-top:0; }
+}
+</style></head><body><main>
+<div class="panel" id="lessonPanel"><div class="topbar lesson-topbar"><nav class="tabs" role="tablist" aria-label="內容區學習模式"><button role="tab" id="tab-principles" aria-controls="principles" aria-selected="false">變音原則</button><button role="tab" id="tab-animation" aria-controls="animation" aria-selected="true">字詞動畫</button><button role="tab" id="tab-practice" aria-controls="practice" aria-selected="false">變音練習</button><label class="tone-speed">速度 <select id="speed"><option value="1000">1 秒</option><option value="2000" selected>2 秒</option><option value="4000">4 秒</option><option value="6000">6 秒</option><option value="10000">10 秒</option></select></label></nav></div><section id="principles" role="tabpanel" aria-labelledby="tab-principles" hidden><div class="words" id="principlesWords" aria-label="變音原則頁選擇詞語"></div><div id="principlesLessonHost"></div></section><section id="animation" role="tabpanel" aria-labelledby="tab-animation"><div class="words" id="words" aria-label="選擇詞語"></div><div id="animationLessonHost"><div id="lessonContent"><div id="animationPojChangeRow" class="animation-poj-change-row" aria-label="變音前後白話字對照"></div><p class="poj" id="poj"></p><div id="toneGraphWrap" class="tone-graph-wrap"><svg viewBox="0 0 680 157.5" role="img" aria-labelledby="graphTitle graphDesc"><title id="graphTitle">音調變化示意圖</title><desc id="graphDesc"></desc><defs><clipPath id="plotClip"><rect x="-59" y="52" width="1208" height="300"/></clipPath></defs><g id="grid"></g><path id="original" transform="translate(87.5 -17.5) scale(.5)" fill="none" stroke="#999184" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 22"/><path id="changing" transform="translate(87.5 -17.5) scale(.5)" fill="none" stroke="#f19b4d" stroke-width="12" stroke-linecap="round"/><path id="fixed" transform="translate(257.5 -17.5) scale(.5)" fill="none" stroke="#65cdbb" stroke-width="12" stroke-linecap="round"/><g id="principlesLowerArt" hidden><use href="#original"/><use href="#changing"/><use href="#fixed"/></g></svg><span id="ruleOneGraphSample" class="rule-one-graph-sample" aria-live="polite" hidden></span></div><div class="syllable-labels" aria-label="逐音節拼寫"><span id="firstLabel"></span><span id="lastLabel"></span></div><div id="animationAddedFooter" class="animation-added-footer" aria-label="字詞動畫最下方音調與章節資訊"><div>第 3 調 → 第 2 調</div><div>馬可福音08:09</div><div>第 1 調（不變）</div></div><svg id="toneDescriptions" class="tone-labels" viewBox="0 0 680 8" role="img" aria-label="音調說明"><text id="firstTone" x="175" y="4.75" text-anchor="middle" fill="#f19b4d" font-size="12"></text><text id="verseSource" x="345" y="4.75" text-anchor="middle" fill="#aaa396" font-size="12"></text><text id="lastTone" x="515" y="4.75" text-anchor="middle" fill="#65cdbb" font-size="12"></text></svg><div id="animationMobileVerseRow" class="animation-mobile-verse-row" aria-label="聖經章節"></div></div></div></section><section id="practice" role="tabpanel" aria-labelledby="tab-practice" hidden><div class="words" id="practiceWords" aria-label="練習頁選擇詞語"></div><div class="practice-quiz"><div id="quizArea"><div class="question" id="question"></div><div class="answers" id="answers"></div><p class="feedback" id="feedback" aria-live="polite"></p><div class="controls practice-footer"><button id="hint">看提示</button><span id="practiceVerseSource" aria-label="練習詞語章節出處"></span><button class="primary" id="next" disabled>下一題 →</button></div></div><div id="result" hidden></div></div></section></div></main>
+<script>
+const __stableWidthListeners=[];
+let __lastStableViewportWidth=document.documentElement.clientWidth;
+function onStableWidthResize(callback){
+ __stableWidthListeners.push(callback);
+}
+window.addEventListener('resize',()=>{
+ const width=document.documentElement.clientWidth;
+ if(width===__lastStableViewportWidth)return;
+ __lastStableViewportWidth=width;
+ for(const callback of __stableWidthListeners)callback();
+});
+
+'use strict';
+const corpus=[{"h":"基督","poj":"Ki-tok","t":1,"verse":"01:01"},{"h":"先知","poj":"Sian-ti","t":1,"verse":"01:02"},{"h":"開路","poj":"khui-lō͘","t":1,"verse":"01:02"},{"h":"修直","poj":"siu-ti̍t","t":1,"verse":"01:03"},{"h":"宣揚","poj":"soan-iông","t":1,"verse":"01:04"},{"h":"很多","poj":"chin chōe","t":1,"verse":"01:05"},{"h":"自己","poj":"ka-kī","t":1,"verse":"01:05"},{"h":"身上","poj":"sin-chiūⁿ","t":1,"verse":"01:10"},{"h":"天使","poj":"thiⁿ-sài","t":1,"verse":"01:13"},{"h":"經過","poj":"keng-kè","t":1,"verse":"01:16"},{"h":"撒網","poj":"pha-bāng","t":1,"verse":"01:16"},{"h":"因為","poj":"in-ūi","t":1,"verse":"01:16"},{"h":"呼召","poj":"ho͘-tiàu","t":1,"verse":"01:20"},{"h":"工人","poj":"kang-lâng","t":1,"verse":"01:20"},{"h":"非常","poj":"hui-siông","t":1,"verse":"01:22"},{"h":"相同","poj":"sio-siâng","t":1,"verse":"01:22"},{"h":"周圍","poj":"chiu-ûi","t":1,"verse":"01:28"},{"h":"全城","poj":"Thong-siâⁿ","t":1,"verse":"01:33"},{"h":"醫治","poj":"i-hó","t":1,"verse":"01:34"},{"h":"偏僻","poj":"phian-phiah","t":1,"verse":"01:35"},{"h":"村莊","poj":"chng-siā","t":1,"verse":"01:38"},{"h":"潔淨","poj":"chheng-khì","t":1,"verse":"01:40"},{"h":"伸手","poj":"chhun-chhiú","t":1,"verse":"01:41"},{"h":"吩咐","poj":"hoan-hù","t":1,"verse":"01:43"},{"h":"千萬","poj":"Chhian-bān","t":1,"verse":"01:44"},{"h":"規定","poj":"kui-tēng","t":1,"verse":"01:44"},{"h":"宣傳","poj":"soan-thoân","t":1,"verse":"01:45"},{"h":"消息","poj":"siau-sit","t":1,"verse":"01:45"},{"h":"公開","poj":"kong-khai","t":1,"verse":"01:45"},{"h":"因為","poj":"In-ūi","t":1,"verse":"02:04"},{"h":"心裡","poj":"sim-lāi","t":1,"verse":"02:06"},{"h":"知道","poj":"chai-iáⁿ","t":1,"verse":"02:08"},{"h":"聽見","poj":"thiaⁿ--tio̍h","t":1,"verse":"02:17"},{"h":"需要","poj":"su-iàu","t":1,"verse":"02:17"},{"h":"醫生","poj":"i-seng","t":1,"verse":"02:17"},{"h":"新郎","poj":"Sin-lông","t":1,"verse":"02:19"},{"h":"婚宴","poj":"hun-iàn","t":1,"verse":"02:19"},{"h":"新郎","poj":"sin-lông","t":1,"verse":"02:20"},{"h":"中間","poj":"tiong-kan","t":1,"verse":"02:20"},{"h":"新布","poj":"sin-pò͘","t":1,"verse":"02:21"},{"h":"反而","poj":"tian-tò","t":1,"verse":"02:21"},{"h":"新酒","poj":"sin-chiú","t":1,"verse":"02:22"},{"h":"應該","poj":"eng-kai","t":1,"verse":"02:22"},{"h":"醫治","poj":"i-tī","t":1,"verse":"03:02"},{"h":"中間","poj":"tiong-ng","t":1,"verse":"03:03"},{"h":"聽見","poj":"thiaⁿ-tio̍h","t":1,"verse":"03:07"},{"h":"西頓","poj":"Se-tùn","t":1,"verse":"03:07"},{"h":"精神","poj":"cheng-sîn","t":1,"verse":"03:21"},{"h":"分裂","poj":"hun-cheng","t":1,"verse":"03:24"},{"h":"家庭","poj":"Ka-têng","t":1,"verse":"03:25"},{"h":"攻擊","poj":"kong-kek","t":1,"verse":"03:26"},{"h":"弟兄","poj":"hiaⁿ-tī","t":1,"verse":"03:31"},{"h":"種子","poj":"cheng-chí","t":1,"verse":"04:03"},{"h":"飛來","poj":"pe--lâi","t":1,"verse":"04:04"},{"h":"很快","poj":"chin kín","t":1,"verse":"04:05"},{"h":"枯萎","poj":"ta--khì","t":1,"verse":"04:06"},{"h":"三十","poj":"saⁿ-cha̍p","t":1,"verse":"04:08"},{"h":"歡喜","poj":"hoaⁿ-hí","t":1,"verse":"04:16"},{"h":"燈臺","poj":"teng-tâi","t":1,"verse":"04:21"},{"h":"收割","poj":"siu-koah","t":1,"verse":"04:29"},{"h":"空中","poj":"khong-tiong","t":1,"verse":"04:32"},{"h":"宣講","poj":"soan-káng","t":1,"verse":"04:33"},{"h":"天黑","poj":"thiⁿ àm","t":1,"verse":"04:35"},{"h":"腳鐐","poj":"kha-khàu","t":1,"verse":"05:04"},{"h":"傷害","poj":"siong-hāi","t":1,"verse":"05:05"},{"h":"軍團","poj":"Kun-thoân","t":1,"verse":"05:09"},{"h":"豬群","poj":"ti-kûn","t":1,"verse":"05:12"},{"h":"整群","poj":"kui-kûn","t":1,"verse":"05:13"},{"h":"腳前","poj":"kha-chêng","t":1,"verse":"05:22"},{"h":"摸到","poj":"bong-tio̍h","t":1,"verse":"05:28"},{"h":"身體","poj":"seng-khu","t":1,"verse":"05:29"},{"h":"整群","poj":"kui-tīn","t":1,"verse":"05:31"},{"h":"家族","poj":"ka-cho̍k","t":1,"verse":"06:04"},{"h":"腳下","poj":"kha--ni̍h","t":1,"verse":"06:11"},{"h":"先知","poj":"sian-ti","t":1,"verse":"06:15"},{"h":"心願","poj":"sim-goān","t":1,"verse":"06:19"},{"h":"機會","poj":"ki-hōe","t":1,"verse":"06:21"},{"h":"發誓","poj":"soan-sè","t":1,"verse":"06:23"},{"h":"屍體","poj":"sin-si","t":1,"verse":"06:29"},{"h":"分組","poj":"hun-cho͘","t":1,"verse":"06:39"},{"h":"分給","poj":"pun hō͘","t":1,"verse":"06:41"},{"h":"天黑","poj":"Thiⁿ àm","t":1,"verse":"06:47"},{"h":"抬來","poj":"kng-lâi","t":1,"verse":"06:56"},{"h":"摸到","poj":"bong--tio̍h","t":1,"verse":"06:56"},{"h":"遵守","poj":"chun-siú","t":1,"verse":"07:04"},{"h":"杯子","poj":"poe-á","t":1,"verse":"07:04"},{"h":"尊敬","poj":"chun-kèng","t":1,"verse":"07:06"},{"h":"方法","poj":"hong-hoat","t":1,"verse":"07:09"},{"h":"姦淫","poj":"su-thong","t":1,"verse":"07:21"},{"h":"偷竊","poj":"thau-the̍h","t":1,"verse":"07:21"},{"h":"謀殺","poj":"hiong-sat","t":1,"verse":"07:21"},{"h":"姦淫","poj":"kan-îm","t":1,"verse":"07:22"},{"h":"貪心","poj":"tham-sim","t":1,"verse":"07:22"},{"h":"驕傲","poj":"kiau-ngō͘","t":1,"verse":"07:22"},{"h":"分辨","poj":"hun-pia̍t","t":1,"verse":"07:22"},{"h":"兩邊","poj":"siang-pêng","t":1,"verse":"07:33"},{"h":"清楚","poj":"chheng-chhó","t":1,"verse":"07:35"},{"h":"聽見","poj":"thiaⁿ--kìⁿ","t":1,"verse":"07:37"},{"h":"三天","poj":"saⁿ ji̍t","t":1,"verse":"08:02"},{"h":"心裡","poj":"sim-tóe","t":1,"verse":"08:12"},{"h":"希律","poj":"Hi-lu̍t","t":1,"verse":"08:15"},{"h":"村外","poj":"chng-gōa","t":1,"verse":"08:23"},{"h":"雙手","poj":"siang-chhiú","t":1,"verse":"08:23"},{"h":"開始","poj":"khai-sí","t":1,"verse":"08:31"},{"h":"交換","poj":"kau-ōaⁿ","t":1,"verse":"08:37"},{"h":"聽從","poj":"thiaⁿ-thàn","t":1,"verse":"09:07"},{"h":"私下","poj":"su-hā","t":1,"verse":"09:10"},{"h":"先來","poj":"seng lâi","t":1,"verse":"09:11"},{"h":"幫助","poj":"pang-chān","t":1,"verse":"09:22"},{"h":"爭論","poj":"cheng-lūn","t":1,"verse":"09:34"},{"h":"雙腳","poj":"siang-kha","t":1,"verse":"09:45"},{"h":"很有","poj":"chin ū","t":1,"verse":"09:50"},{"h":"穿過","poj":"chhng-kè","t":1,"verse":"10:25"},{"h":"針眼","poj":"chiam-phīⁿ","t":1,"verse":"10:25"},{"h":"今世","poj":"kim-sè","t":1,"verse":"10:30"},{"h":"鞭打","poj":"piⁿ-phah","t":1,"verse":"10:34"},{"h":"犧牲","poj":"hi-seng","t":1,"verse":"10:45"},{"h":"聽說","poj":"thiaⁿ-kóng","t":1,"verse":"10:47"},{"h":"山腳","poj":"soaⁿ-kha","t":1,"verse":"11:01"},{"h":"牽來","poj":"khan-lâi","t":1,"verse":"11:02"},{"h":"牽走","poj":"khan--khì","t":1,"verse":"11:06"},{"h":"歡迎","poj":"hoan-gêng","t":1,"verse":"11:08"},{"h":"稱頌","poj":"chheng-chàn","t":1,"verse":"11:09"},{"h":"通道","poj":"thong-lō͘","t":1,"verse":"11:16"},{"h":"整棵","poj":"kui-châng","t":1,"verse":"11:20"},{"h":"天父","poj":"Thiⁿ-pē","t":1,"verse":"11:25"},{"h":"開墾","poj":"khai-khún","t":1,"verse":"12:01"},{"h":"收成","poj":"Siu-sêng","t":1,"verse":"12:02"},{"h":"空手","poj":"khang-chhiú","t":1,"verse":"12:03"},{"h":"尊重","poj":"chun-tiōng","t":1,"verse":"12:06"},{"h":"基石","poj":"ki-chio̍h","t":1,"verse":"12:10"},{"h":"差別","poj":"chha-pia̍t","t":1,"verse":"12:14"},{"h":"嫂嫂","poj":"hiaⁿ-só","t":1,"verse":"12:19"},{"h":"天上","poj":"thiⁿ-téng","t":1,"verse":"12:25"},{"h":"關於","poj":"Koan-hē","t":1,"verse":"12:26"},{"h":"很對","poj":"chin tio̍h","t":1,"verse":"12:32"},{"h":"腳下","poj":"kha-ē","t":1,"verse":"12:36"},{"h":"稱呼","poj":"chheng-ho͘","t":1,"verse":"12:37"},{"h":"家產","poj":"ke-hé","t":1,"verse":"12:40"},{"h":"很長","poj":"chin tn̂g","t":1,"verse":"12:40"},{"h":"終局","poj":"chiong-kio̍k","t":1,"verse":"13:07"},{"h":"饑荒","poj":"ki-hng","t":1,"verse":"13:08"},{"h":"最初","poj":"chhui-chūn","t":1,"verse":"13:08"},{"h":"君王","poj":"kun-ông","t":1,"verse":"13:09"},{"h":"交給","poj":"kau hō͘","t":1,"verse":"13:11"},{"h":"山裡","poj":"soaⁿ-lāi","t":1,"verse":"13:14"},{"h":"懷孕","poj":"sin-īn","t":1,"verse":"13:17"},{"h":"嬰兒","poj":"eⁿ-á","t":1,"verse":"13:17"},{"h":"冬天","poj":"tang-thiⁿ","t":1,"verse":"13:18"},{"h":"災難","poj":"chai-lān","t":1,"verse":"13:19"},{"h":"將來","poj":"chiong-lâi","t":1,"verse":"13:19"},{"h":"相信","poj":"siong-sìn","t":1,"verse":"13:21"},{"h":"黑暗","poj":"o͘-àm","t":1,"verse":"13:24"},{"h":"充滿","poj":"chhiong-móa","t":1,"verse":"13:26"},{"h":"差遣","poj":"chhe-khián","t":1,"verse":"13:27"},{"h":"分派","poj":"hun-phòe","t":1,"verse":"13:34"},{"h":"工作","poj":"kang-chok","t":1,"verse":"13:34"},{"h":"恐怕","poj":"kiaⁿ-liáu","t":1,"verse":"14:02"},{"h":"西門","poj":"Se-bûn","t":1,"verse":"14:03"},{"h":"香油","poj":"phang-iû","t":1,"verse":"14:03"},{"h":"三百","poj":"saⁿ-pah","t":1,"verse":"14:05"},{"h":"為難","poj":"tiau-lân","t":1,"verse":"14:06"},{"h":"傷心","poj":"siong-sim","t":1,"verse":"14:19"},{"h":"今夜","poj":"kim-mî","t":1,"verse":"14:30"},{"h":"堅持","poj":"kian-chhî","t":1,"verse":"14:31"},{"h":"雖然","poj":"sui-jiân","t":1,"verse":"14:38"},{"h":"烤火","poj":"hang-hé","t":1,"verse":"14:54"},{"h":"聽見","poj":"thiaⁿ-kìⁿ","t":1,"verse":"14:58"},{"h":"稱為","poj":"chheng-chòe","t":1,"verse":"15:12"},{"h":"士兵","poj":"Peng-sū","t":1,"verse":"15:16"},{"h":"抽籤","poj":"thiu-chhiam","t":1,"verse":"15:24"},{"h":"中午","poj":"Tiong-tàu","t":1,"verse":"15:33"},{"h":"安葬","poj":"an-chòng","t":1,"verse":"15:46"},{"h":"香料","poj":"phang-liāu","t":1,"verse":"16:01"},{"h":"預備","poj":"chún-pī","t":2,"verse":"01:03"},{"h":"小路","poj":"sió-lō͘","t":2,"verse":"01:03"},{"h":"洗禮","poj":"sóe-lé","t":2,"verse":"01:04"},{"h":"悔改","poj":"hóe-kái","t":2,"verse":"01:04"},{"h":"接受","poj":"niá-siū","t":2,"verse":"01:04"},{"h":"所有","poj":"só͘-ū","t":2,"verse":"01:05"},{"h":"蝗蟲","poj":"chháu-meh","t":2,"verse":"01:06"},{"h":"野蜜","poj":"iá-bi̍t","t":2,"verse":"01:06"},{"h":"水裡","poj":"chúi--ni̍h","t":2,"verse":"01:10"},{"h":"鴿子","poj":"hún-chiáu","t":2,"verse":"01:10"},{"h":"之後","poj":"liáu-āu","t":2,"verse":"01:14"},{"h":"整理","poj":"chéng-lí","t":2,"verse":"01:19"},{"h":"毀滅","poj":"húi-bia̍t","t":2,"verse":"01:24"},{"h":"說話","poj":"kóng-ōe","t":2,"verse":"01:34"},{"h":"還未","poj":"iáu-bē","t":2,"verse":"01:35"},{"h":"地方","poj":"só͘-chāi","t":2,"verse":"01:35"},{"h":"趕鬼","poj":"kóaⁿ-kúi","t":2,"verse":"01:39"},{"h":"懇求","poj":"khún-kiû","t":2,"verse":"01:40"},{"h":"講道","poj":"káng-tō","t":2,"verse":"02:02"},{"h":"上面","poj":"téng-bīn","t":2,"verse":"02:04"},{"h":"幾個","poj":"kúi-nā","t":2,"verse":"02:06"},{"h":"起來","poj":"Khí--lâi","t":2,"verse":"02:09"},{"h":"回去","poj":"tńg-khì","t":2,"verse":"02:11"},{"h":"起來","poj":"khí-lâi","t":2,"verse":"02:14"},{"h":"壞掉","poj":"pháiⁿ--khì","t":2,"verse":"02:22"},{"h":"以外","poj":"í-gōa","t":2,"verse":"02:26"},{"h":"鬼王","poj":"kúi-ông","t":2,"verse":"03:22"},{"h":"什麼","poj":"sím-mi̍h","t":2,"verse":"03:28"},{"h":"永遠","poj":"éng-oán","t":2,"verse":"03:29"},{"h":"妹妹","poj":"sió-bē","t":2,"verse":"03:32"},{"h":"旨意","poj":"chí-ì","t":2,"verse":"03:35"},{"h":"姊妹","poj":"chí-bē","t":2,"verse":"03:35"},{"h":"種子","poj":"chéng-chí","t":2,"verse":"04:04"},{"h":"鳥兒","poj":"chiáu-á","t":2,"verse":"04:04"},{"h":"已經","poj":"í-keng","t":2,"verse":"04:11"},{"h":"搶走","poj":"chhiúⁿ--khì","t":2,"verse":"04:15"},{"h":"遇到","poj":"tú-tio̍h","t":2,"verse":"04:17"},{"h":"點燈","poj":"tiám-teng","t":2,"verse":"04:21"},{"h":"顯露","poj":"hián-lō͘","t":2,"verse":"04:22"},{"h":"土地","poj":"Thó͘-tōe","t":2,"verse":"04:28"},{"h":"五穀","poj":"Ngó͘-kok","t":2,"verse":"04:29"},{"h":"只有","poj":"chí-ū","t":2,"verse":"04:34"},{"h":"捆綁","poj":"khún-pa̍k","t":2,"verse":"05:04"},{"h":"跑來","poj":"cháu-lâi","t":2,"verse":"05:06"},{"h":"跑去","poj":"cháu-khì","t":2,"verse":"05:14"},{"h":"回去","poj":"Tńg-khì","t":2,"verse":"05:19"},{"h":"感覺","poj":"kám-kak","t":2,"verse":"05:29"},{"h":"死去","poj":"sí--khì","t":2,"verse":"05:35"},{"h":"嘲笑","poj":"thí-chhiò","t":2,"verse":"05:40"},{"h":"哪裡","poj":"tó-ūi","t":2,"verse":"06:02"},{"h":"拐杖","poj":"koáiⁿ-á","t":2,"verse":"06:08"},{"h":"表示","poj":"piáu-sī","t":2,"verse":"06:11"},{"h":"警告","poj":"kéng-kò","t":2,"verse":"06:11"},{"h":"死人","poj":"sí-lâng","t":2,"verse":"06:14"},{"h":"保護","poj":"pó-hō͘","t":2,"verse":"06:20"},{"h":"領袖","poj":"léng-siù","t":2,"verse":"06:21"},{"h":"衛兵","poj":"kéng-ōe","t":2,"verse":"06:27"},{"h":"回來","poj":"tńg-lâi","t":2,"verse":"06:30"},{"h":"憐憫","poj":"khó-lîn","t":2,"verse":"06:34"},{"h":"解散","poj":"kái-sàn","t":2,"verse":"06:36"},{"h":"草地","poj":"chháu-po͘","t":2,"verse":"06:39"},{"h":"感謝","poj":"kám-siā","t":2,"verse":"06:41"},{"h":"洗手","poj":"sóe-chhiú","t":2,"verse":"07:02"},{"h":"祖先","poj":"chó͘-sian","t":2,"verse":"07:03"},{"h":"子民","poj":"chú-bîn","t":2,"verse":"07:06"},{"h":"處死","poj":"chhú-sí","t":2,"verse":"07:10"},{"h":"禮物","poj":"lé-mi̍h","t":2,"verse":"07:11"},{"h":"保密","poj":"pó-bi̍t","t":2,"verse":"07:24"},{"h":"小狗","poj":"káu-á","t":2,"verse":"07:27"},{"h":"回去","poj":"tńg--khì","t":2,"verse":"07:29"},{"h":"嘆氣","poj":"thó͘-khùi","t":2,"verse":"07:34"},{"h":"境內","poj":"kéng-lāi","t":2,"verse":"08:10"},{"h":"幾籃","poj":"kúi nâ","t":2,"verse":"08:19"},{"h":"幾籃","poj":"kúi láng","t":2,"verse":"08:20"},{"h":"彼得","poj":"Pí-tek","t":2,"verse":"08:29"},{"h":"苦難","poj":"khó͘-lān","t":2,"verse":"08:31"},{"h":"長老","poj":"tiúⁿ-ló","t":2,"verse":"08:31"},{"h":"雅各","poj":"Ngá-kok","t":2,"verse":"09:02"},{"h":"改變","poj":"kái-piàn","t":2,"verse":"09:02"},{"h":"趕緊","poj":"kóaⁿ-kín","t":2,"verse":"09:08"},{"h":"問安","poj":"chhéng-an","t":2,"verse":"09:15"},{"h":"忍耐","poj":"jím-nāi","t":2,"verse":"09:19"},{"h":"孩子","poj":"Gín-á","t":2,"verse":"09:24"},{"h":"啞巴","poj":"é-káu","t":2,"verse":"09:25"},{"h":"但是","poj":"Chóng-sī","t":2,"verse":"09:27"},{"h":"我的","poj":"góa--ê","t":2,"verse":"09:37"},{"h":"阻止","poj":"chó͘-tòng","t":2,"verse":"09:38"},{"h":"火燒","poj":"hé sio","t":2,"verse":"09:43"},{"h":"准許","poj":"ún-chún","t":2,"verse":"10:04"},{"h":"起初","poj":"khí-thâu","t":2,"verse":"10:06"},{"h":"理由","poj":"lí-iû","t":2,"verse":"10:07"},{"h":"跑來","poj":"cháu--lâi","t":2,"verse":"10:17"},{"h":"簡單","poj":"kán-tan","t":2,"verse":"10:25"},{"h":"兒女","poj":"kiáⁿ-jî","t":2,"verse":"10:29"},{"h":"死罪","poj":"sí-chōe","t":2,"verse":"10:33"},{"h":"底買","poj":"Tí-mái","t":2,"verse":"10:46"},{"h":"解開","poj":"tháu-khui","t":2,"verse":"11:02"},{"h":"果子","poj":"ké-chí","t":2,"verse":"11:13"},{"h":"永遠","poj":"Éng-oán","t":2,"verse":"11:14"},{"h":"買賣","poj":"bóe-bōe","t":2,"verse":"11:15"},{"h":"別人","poj":"bó͘-lâng","t":2,"verse":"11:25"},{"h":"恐怕","poj":"khióng-kiaⁿ","t":2,"verse":"11:32"},{"h":"侮辱","poj":"bú-jio̍k","t":2,"verse":"12:04"},{"h":"還有","poj":"iáu ū","t":2,"verse":"12:06"},{"h":"處理","poj":"chhú-lí","t":2,"verse":"12:09"},{"h":"主人","poj":"chú-lâng","t":2,"verse":"12:09"},{"h":"凱撒","poj":"Khái-sat","t":2,"verse":"12:14"},{"h":"詭計","poj":"khúi-kè","t":2,"verse":"12:15"},{"h":"以前","poj":"Í-chêng","t":2,"verse":"12:20"},{"h":"以撒","poj":"Í-sat","t":2,"verse":"12:26"},{"h":"所有","poj":"Só͘-ū","t":2,"verse":"12:28"},{"h":"以後","poj":"í-āu","t":2,"verse":"12:34"},{"h":"感動","poj":"kám-tōng","t":2,"verse":"12:36"},{"h":"寡婦","poj":"kóaⁿ-hū","t":2,"verse":"12:40"},{"h":"我的","poj":"góa ê","t":2,"verse":"13:06"},{"h":"總督","poj":"chóng-tok","t":2,"verse":"13:09"},{"h":"可憎","poj":"Khó-ò͘ⁿ","t":2,"verse":"13:14"},{"h":"以來","poj":"í-lâi","t":2,"verse":"13:19"},{"h":"選民","poj":"soán-bîn","t":2,"verse":"13:20"},{"h":"說了","poj":"kóng lah","t":2,"verse":"13:23"},{"h":"警醒","poj":"kéng-séng","t":2,"verse":"13:33"},{"h":"回來","poj":"tńg--lâi","t":2,"verse":"13:35"},{"h":"裝滿","poj":"tóe-móa","t":2,"verse":"14:03"},{"h":"好事","poj":"hó-sū","t":2,"verse":"14:06"},{"h":"水罐","poj":"chúi-pân","t":2,"verse":"14:13"},{"h":"誘惑","poj":"iú-he̍k","t":2,"verse":"14:38"},{"h":"軟弱","poj":"loán-jio̍k","t":2,"verse":"14:38"},{"h":"手中","poj":"chhiú-thâu","t":2,"verse":"14:41"},{"h":"紫色","poj":"chí-sek","t":2,"verse":"15:17"},{"h":"魯孚","poj":"Ló͘-hu","t":2,"verse":"15:21"},{"h":"正好","poj":"tú-hó","t":2,"verse":"15:21"},{"h":"已經","poj":"Í-keng","t":2,"verse":"15:42"},{"h":"放膽","poj":"hó-táⁿ","t":2,"verse":"15:43"},{"h":"請求","poj":"chhéng-kiû","t":2,"verse":"15:43"},{"h":"顯現","poj":"hián-hiān","t":2,"verse":"16:09"},{"h":"語言","poj":"gú-giân","t":2,"verse":"16:17"},{"h":"記載","poj":"kì-chài","t":3,"verse":"01:02"},{"h":"使者","poj":"sù-chiá","t":3,"verse":"01:02"},{"h":"曠野","poj":"khòng-iá","t":3,"verse":"01:03"},{"h":"赦免","poj":"sià-bián","t":3,"verse":"01:04"},{"h":"看見","poj":"khòaⁿ-kìⁿ","t":3,"verse":"01:10"},{"h":"降下","poj":"kàng-lo̍h","t":3,"verse":"01:10"},{"h":"試探","poj":"chhì-thàm","t":3,"verse":"01:13"},{"h":"看見","poj":"khòaⁿ-tio̍h","t":3,"verse":"01:16"},{"h":"放下","poj":"pàng--leh","t":3,"verse":"01:18"},{"h":"教導","poj":"kà-sī","t":3,"verse":"01:21"},{"h":"眾人","poj":"Chèng-lâng","t":3,"verse":"01:22"},{"h":"聖者","poj":"Sèng-chiá","t":3,"verse":"01:24"},{"h":"退去","poj":"thè--khì","t":3,"verse":"01:31"},{"h":"眾人","poj":"chèng-lâng","t":3,"verse":"01:32"},{"h":"清早","poj":"thàu-chá","t":3,"verse":"01:35"},{"h":"附近","poj":"hù-kūn","t":3,"verse":"01:38"},{"h":"祭司","poj":"chè-si","t":3,"verse":"01:44"},{"h":"祭物","poj":"chè-mi̍h","t":3,"verse":"01:44"},{"h":"證明","poj":"chèng-bêng","t":3,"verse":"01:44"},{"h":"四處","poj":"sì-kòe","t":3,"verse":"01:45"},{"h":"屋頂","poj":"chhù-téng","t":3,"verse":"02:04"},{"h":"信心","poj":"sìn-sim","t":3,"verse":"02:05"},{"h":"赦罪","poj":"sià-chōe","t":3,"verse":"02:07"},{"h":"稅關","poj":"sè-koan","t":3,"verse":"02:14"},{"h":"禁食","poj":"kìm-chia̍h","t":3,"verse":"02:18"},{"h":"獻祭","poj":"hiàn-chè","t":3,"verse":"02:26"},{"h":"創造","poj":"chhòng-chō","t":3,"verse":"02:27"},{"h":"對付","poj":"tùi-hù","t":3,"verse":"03:06"},{"h":"推羅","poj":"Thài-ní","t":3,"verse":"03:07"},{"h":"意思","poj":"ì-sù","t":3,"verse":"03:17"},{"h":"屋裡","poj":"chhù--ni̍h","t":3,"verse":"03:20"},{"h":"比喻","poj":"phì-jū","t":3,"verse":"03:23"},{"h":"褻瀆","poj":"pòng-to̍k","t":3,"verse":"03:28"},{"h":"荊棘","poj":"chhì-phè","t":3,"verse":"04:07"},{"h":"使徒","poj":"sù-tô͘","t":3,"verse":"04:10"},{"h":"憂慮","poj":"khòa-lū","t":3,"verse":"04:19"},{"h":"注意","poj":"chù-ì","t":3,"verse":"04:24"},{"h":"夜間","poj":"àm-sî","t":3,"verse":"04:27"},{"h":"穗子","poj":"thò͘-sūi","t":3,"verse":"04:28"},{"h":"最後","poj":"chòe-āu","t":3,"verse":"04:28"},{"h":"到了","poj":"kàu lah","t":3,"verse":"04:29"},{"h":"作巢","poj":"chòe siū","t":3,"verse":"04:32"},{"h":"叫醒","poj":"kiò-chhíⁿ","t":3,"verse":"04:38"},{"h":"進入","poj":"chìn-ji̍p","t":3,"verse":"05:13"},{"h":"正常","poj":"chèng-siông","t":3,"verse":"05:15"},{"h":"痛苦","poj":"thòng-khó͘","t":3,"verse":"05:26"},{"h":"回去","poj":"tò--khì","t":3,"verse":"05:34"},{"h":"回去","poj":"tò-khì","t":3,"verse":"06:01"},{"h":"故鄉","poj":"kò͘-hiong","t":3,"verse":"06:01"},{"h":"智慧","poj":"tì-hūi","t":3,"verse":"06:02"},{"h":"住在","poj":"tòa tī","t":3,"verse":"06:03"},{"h":"公義","poj":"chèng-gī","t":3,"verse":"06:20"},{"h":"聖潔","poj":"sèng-kiat","t":3,"verse":"06:20"},{"h":"宴席","poj":"iàn-se̍k","t":3,"verse":"06:21"},{"h":"跳舞","poj":"thiàu-bú","t":3,"verse":"06:22"},{"h":"貴賓","poj":"kùi-pin","t":3,"verse":"06:22"},{"h":"使徒","poj":"Sù-tô͘","t":3,"verse":"06:30"},{"h":"報告","poj":"pò-kò","t":3,"verse":"06:30"},{"h":"查看","poj":"khòaⁿ-bāi","t":3,"verse":"06:38"},{"h":"對面","poj":"tùi-bīn","t":3,"verse":"06:45"},{"h":"划船","poj":"kò-chiúⁿ","t":3,"verse":"06:48"},{"h":"意義","poj":"ì-gī","t":3,"verse":"06:52"},{"h":"回來","poj":"tò--lâi","t":3,"verse":"07:04"},{"h":"嘴唇","poj":"chhùi-tûn","t":3,"verse":"07:06"},{"h":"敬拜","poj":"kèng-pài","t":3,"verse":"07:07"},{"h":"竟然","poj":"kèng-jiân","t":3,"verse":"07:08"},{"h":"誡命","poj":"kài-bēng","t":3,"verse":"07:08"},{"h":"孝敬","poj":"hàu-kèng","t":3,"verse":"07:10"},{"h":"放蕩","poj":"hòng-chhiòng","t":3,"verse":"07:22"},{"h":"嫉妒","poj":"oàn-tò͘","t":3,"verse":"07:22"},{"h":"禁止","poj":"kìm-chí","t":3,"verse":"07:36"},{"h":"四千","poj":"sì-chheng","t":3,"verse":"08:09"},{"h":"世代","poj":"sè-tāi","t":3,"verse":"08:12"},{"h":"看見","poj":"khòaⁿ--kìⁿ","t":3,"verse":"08:18"},{"h":"唾液","poj":"chhùi-nōa","t":3,"verse":"08:23"},{"h":"世界","poj":"sè-kài","t":3,"verse":"08:36"},{"h":"生命","poj":"sìⁿ-miā","t":3,"verse":"08:36"},{"h":"聖經","poj":"Sèng-keng","t":3,"verse":"09:12"},{"h":"對待","poj":"tùi-thāi","t":3,"verse":"09:13"},{"h":"耳聾","poj":"chhàu-hī","t":3,"verse":"09:25"},{"h":"變成","poj":"pìⁿ-chòe","t":3,"verse":"09:26"},{"h":"照常","poj":"chiàu-siông","t":3,"verse":"10:01"},{"h":"看見","poj":"khòaⁿ--tio̍h","t":3,"verse":"10:14"},{"h":"困難","poj":"khùn-lân","t":3,"verse":"10:23"},{"h":"右邊","poj":"chiàⁿ-pêng","t":3,"verse":"10:37"},{"h":"左邊","poj":"tò-pêng","t":3,"verse":"10:37"},{"h":"聖殿","poj":"Sèng-tiān","t":3,"verse":"11:11"},{"h":"季節","poj":"kùi-chiat","t":3,"verse":"11:13"},{"h":"咒詛","poj":"chiù-chó͘","t":3,"verse":"11:21"},{"h":"回答","poj":"ìn-tap","t":3,"verse":"11:29"},{"h":"四周","poj":"sì-bīn","t":3,"verse":"12:01"},{"h":"丟棄","poj":"khì-sak","t":3,"verse":"12:10"},{"h":"看出","poj":"khòaⁿ-chhut","t":3,"verse":"12:15"},{"h":"鄰舍","poj":"chhù-piⁿ","t":3,"verse":"12:31"},{"h":"敵人","poj":"tùi-te̍k","t":3,"verse":"12:36"},{"h":"宴會","poj":"iàn-hōe","t":3,"verse":"12:39"},{"h":"貧窮","poj":"sàn-chhiah","t":3,"verse":"12:42"},{"h":"戰爭","poj":"chiàn-cheng","t":3,"verse":"13:07"},{"h":"見證","poj":"kiàn-chèng","t":3,"verse":"13:09"},{"h":"憎恨","poj":"oàn-hūn","t":3,"verse":"13:13"},{"h":"四方","poj":"sì-hng","t":3,"verse":"13:27"},{"h":"半夜","poj":"pòaⁿ-mî","t":3,"verse":"13:35"},{"h":"打破","poj":"kòng-phòa","t":3,"verse":"14:03"},{"h":"紀念","poj":"kì-liām","t":3,"verse":"14:09"},{"h":"夠了","poj":"Kàu-gia̍h","t":3,"verse":"14:41"},{"h":"派來","poj":"phài--lâi","t":3,"verse":"14:43"},{"h":"暗號","poj":"àm-hō","t":3,"verse":"14:44"},{"h":"看守","poj":"khàn-siú","t":3,"verse":"14:44"},{"h":"應驗","poj":"èng-giām","t":3,"verse":"14:49"},{"h":"證據","poj":"chèng-kù","t":3,"verse":"14:55"},{"h":"證詞","poj":"chèng-sû","t":3,"verse":"14:56"},{"h":"慣例","poj":"koàn-lē","t":3,"verse":"15:08"},{"h":"煽動","poj":"siàn-tōng","t":3,"verse":"15:11"},{"h":"見到","poj":"kìⁿ-tio̍h","t":3,"verse":"16:07"},{"h":"證實","poj":"chèng-si̍t","t":3,"verse":"16:20"},{"h":"福音","poj":"hok-im","t":4,"verse":"01:01"},{"h":"約翰","poj":"Iok-hān","t":4,"verse":"01:04"},{"h":"出現","poj":"chhut-hiān","t":4,"verse":"01:04"},{"h":"出來","poj":"chhut--lâi","t":4,"verse":"01:05"},{"h":"撒但","poj":"Sat-tàn","t":4,"verse":"01:13"},{"h":"一直","poj":"it-ti̍t","t":4,"verse":"01:13"},{"h":"責備","poj":"chek-pī","t":4,"verse":"01:25"},{"h":"這個","poj":"chit-ê","t":4,"verse":"01:25"},{"h":"出去","poj":"chhut--khì","t":4,"verse":"01:25"},{"h":"那個","poj":"hit-ê","t":4,"verse":"01:26"},{"h":"發燒","poj":"hoat-jia̍t","t":4,"verse":"01:30"},{"h":"出去","poj":"chhut-khì","t":4,"verse":"01:35"},{"h":"得到","poj":"tit-tio̍h","t":4,"verse":"01:44"},{"h":"這個","poj":"Chit-ê","t":4,"verse":"02:07"},{"h":"撐破","poj":"piak-phòa","t":4,"verse":"02:22"},{"h":"肚子","poj":"pak-tó͘","t":4,"verse":"02:25"},{"h":"設立","poj":"siat-li̍p","t":4,"verse":"02:27"},{"h":"那些","poj":"Hiah-ê","t":4,"verse":"03:06"},{"h":"出賣","poj":"chhut-bōe","t":4,"verse":"03:19"},{"h":"出來","poj":"chhut-lâi","t":4,"verse":"03:21"},{"h":"失常","poj":"sit-siông","t":4,"verse":"03:21"},{"h":"國家","poj":"Kok-ka","t":4,"verse":"03:24"},{"h":"一定","poj":"it-tēng","t":4,"verse":"03:26"},{"h":"褻瀆","poj":"siat-to̍k","t":4,"verse":"03:29"},{"h":"這些","poj":"chiah-ê","t":4,"verse":"03:30"},{"h":"發芽","poj":"puh-gê","t":4,"verse":"04:05"},{"h":"接受","poj":"chiap-siū","t":4,"verse":"04:16"},{"h":"迫害","poj":"pek-hāi","t":4,"verse":"04:17"},{"h":"一切","poj":"it-chhè","t":4,"verse":"04:22"},{"h":"忽然","poj":"Hut-jiân","t":4,"verse":"04:37"},{"h":"鐵鍊","poj":"thih-liān","t":4,"verse":"05:03"},{"h":"扯斷","poj":"chhoah-tn̄g","t":4,"verse":"05:04"},{"h":"那時","poj":"Hit-sî","t":4,"verse":"05:11"},{"h":"約有","poj":"iok ū","t":4,"verse":"05:13"},{"h":"發生","poj":"hoat-seng","t":4,"verse":"05:14"},{"h":"血漏","poj":"hiat-lāu","t":4,"verse":"05:29"},{"h":"那個","poj":"Hit-ê","t":4,"verse":"05:33"},{"h":"約瑟","poj":"Iok-se","t":4,"verse":"06:03"},{"h":"出門","poj":"chhut-mn̂g","t":4,"verse":"06:08"},{"h":"接受","poj":"chiap-la̍p","t":4,"verse":"06:11"},{"h":"復活","poj":"koh-oa̍h","t":4,"verse":"06:14"},{"h":"懷恨","poj":"khioh-hūn","t":4,"verse":"06:19"},{"h":"不安","poj":"put-an","t":4,"verse":"06:20"},{"h":"休息","poj":"hioh-khùn","t":4,"verse":"06:31"},{"h":"這些","poj":"Chiah-ê","t":4,"verse":"07:23"},{"h":"出發","poj":"chhut-hoat","t":4,"verse":"07:24"},{"h":"出生","poj":"chhut-sì","t":4,"verse":"07:26"},{"h":"這句","poj":"chit-kù","t":4,"verse":"07:29"},{"h":"七個","poj":"Chhit ê","t":4,"verse":"08:05"},{"h":"七籃","poj":"chhit láng","t":4,"verse":"08:08"},{"h":"七籃","poj":"Chhit láng","t":4,"verse":"08:20"},{"h":"忽然","poj":"hut-jiân","t":4,"verse":"09:02"},{"h":"失去","poj":"sit-khì","t":4,"verse":"09:50"},{"h":"結合","poj":"kiat-ha̍p","t":4,"verse":"10:07"},{"h":"祝福","poj":"chiok-hok","t":4,"verse":"10:13"},{"h":"出外","poj":"chhut-gōa","t":4,"verse":"10:17"},{"h":"百倍","poj":"pah-pē","t":4,"verse":"10:30"},{"h":"失明","poj":"sit-bêng","t":4,"verse":"10:46"},{"h":"丟掉","poj":"hiat-tiāu","t":4,"verse":"10:50"},{"h":"那些","poj":"hiah-ê","t":4,"verse":"11:06"},{"h":"這座","poj":"chit-chō","t":4,"verse":"11:23"},{"h":"得到","poj":"tit--tio̍h","t":4,"verse":"11:24"},{"h":"作為","poj":"chok-ûi","t":4,"verse":"12:11"},{"h":"復活","poj":"Koh-oa̍h","t":4,"verse":"12:23"},{"h":"燃燒","poj":"Teh to̍h","t":4,"verse":"12:26"},{"h":"降服","poj":"khut-ho̍k","t":4,"verse":"12:36"},{"h":"拆毀","poj":"thiah-húi","t":4,"verse":"13:02"},{"h":"拆到","poj":"thiah kah","t":4,"verse":"13:02"},{"h":"坐著","poj":"teh chē","t":4,"verse":"13:03"},{"h":"國家","poj":"kok-ka","t":4,"verse":"13:08"},{"h":"那時","poj":"hit-sî","t":4,"verse":"13:11"},{"h":"發光","poj":"hoat-kng","t":4,"verse":"13:24"},{"h":"這邊","poj":"chit-pêng","t":4,"verse":"13:27"},{"h":"接近","poj":"chiap-kūn","t":4,"verse":"13:29"},{"h":"節期","poj":"choeh-kî","t":4,"verse":"14:02"},{"h":"這罐","poj":"Chit-koàn","t":4,"verse":"14:05"},{"h":"答應","poj":"tah-èng","t":4,"verse":"14:11"},{"h":"押走","poj":"ah--khì","t":4,"verse":"14:44"},{"h":"跟著","poj":"teh tè","t":4,"verse":"14:51"},{"h":"一致","poj":"it-tì","t":4,"verse":"14:56"},{"h":"押去","poj":"ah-khì","t":4,"verse":"15:01"},{"h":"決定","poj":"koat-tēng","t":4,"verse":"15:24"},{"h":"約瑟","poj":"Iok-sek","t":4,"verse":"15:43"},{"h":"確實","poj":"khak-si̍t","t":4,"verse":"15:45"},{"h":"耶穌","poj":"Iâ-so͘","t":5,"verse":"01:01"},{"h":"猶太","poj":"Iû-thài","t":5,"verse":"01:05"},{"h":"皮帶","poj":"phê-tòa","t":5,"verse":"01:06"},{"h":"海邊","poj":"ô͘-piⁿ","t":5,"verse":"01:16"},{"h":"海裡","poj":"ô͘--ni̍h","t":5,"verse":"01:16"},{"h":"船上","poj":"chûn-téng","t":5,"verse":"01:19"},{"h":"門徒","poj":"bûn-tô͘","t":5,"verse":"01:21"},{"h":"權威","poj":"koân-ui","t":5,"verse":"01:22"},{"h":"邪靈","poj":"siâ-sîn","t":5,"verse":"01:23"},{"h":"邪靈","poj":"Siâ-sîn","t":5,"verse":"01:26"},{"h":"服從","poj":"hâng-ho̍k","t":5,"verse":"01:27"},{"h":"名聲","poj":"miâ-siaⁿ","t":5,"verse":"01:28"},{"h":"黃昏","poj":"Hông-hun","t":5,"verse":"01:32"},{"h":"門口","poj":"mn̂g-kháu","t":5,"verse":"01:33"},{"h":"禱告","poj":"kî-tó","t":5,"verse":"01:35"},{"h":"同伴","poj":"tâng-phōaⁿ","t":5,"verse":"01:36"},{"h":"前往","poj":"lâi-khì","t":5,"verse":"01:38"},{"h":"傳道","poj":"thoân-tō","t":5,"verse":"01:38"},{"h":"痲瘋","poj":"bâ-hong","t":5,"verse":"01:40"},{"h":"憐憫","poj":"lîn-bín","t":5,"verse":"01:41"},{"h":"摩西","poj":"Mô͘-se","t":5,"verse":"01:44"},{"h":"城外","poj":"siâⁿ-gōa","t":5,"verse":"01:45"},{"h":"人子","poj":"Jîn-chú","t":5,"verse":"02:10"},{"h":"皮袋","poj":"phê-tē","t":5,"verse":"02:22"},{"h":"猶大","poj":"Iû-tāi","t":5,"verse":"03:19"},{"h":"財物","poj":"châi-bu̍t","t":5,"verse":"03:27"},{"h":"土少","poj":"thô͘ chió","t":5,"verse":"04:05"},{"h":"成長","poj":"sêng-tióng","t":5,"verse":"04:08"},{"h":"明白","poj":"bêng-pe̍k","t":5,"verse":"04:13"},{"h":"其他","poj":"kî-tha","t":5,"verse":"04:13"},{"h":"同樣","poj":"Siâng-khoán","t":5,"verse":"04:16"},{"h":"錢財","poj":"chîⁿ-châi","t":5,"verse":"04:19"},{"h":"迷惑","poj":"bê-he̍k","t":5,"verse":"04:19"},{"h":"同樣","poj":"siâng-khoán","t":5,"verse":"04:24"},{"h":"門徒","poj":"Bûn-tô͘","t":5,"verse":"04:36"},{"h":"群眾","poj":"kûn-chiòng","t":5,"verse":"04:36"},{"h":"船裡","poj":"chûn-lāi","t":5,"verse":"04:37"},{"h":"船尾","poj":"chûn-bé","t":5,"verse":"04:38"},{"h":"每天","poj":"mî-ji̍t","t":5,"verse":"05:05"},{"h":"城裡","poj":"siâⁿ-lāi","t":5,"verse":"05:14"},{"h":"平安","poj":"pêng-an","t":5,"verse":"05:34"},{"h":"然後","poj":"jiân-āu","t":5,"verse":"05:40"},{"h":"房間","poj":"pâng-keng","t":5,"verse":"05:40"},{"h":"神蹟","poj":"sîn-jiah","t":5,"verse":"06:02"},{"h":"涼鞋","poj":"liâng-ôe","t":5,"verse":"06:09"},{"h":"塵土","poj":"thô͘-hún","t":5,"verse":"06:11"},{"h":"傳遍","poj":"thoân-piàn","t":5,"verse":"06:14"},{"h":"權能","poj":"koân-lêng","t":5,"verse":"06:14"},{"h":"原因","poj":"goân-in","t":5,"verse":"06:17"},{"h":"民間","poj":"bîn-kan","t":5,"verse":"06:21"},{"h":"王國","poj":"ông-kok","t":5,"verse":"06:23"},{"h":"頭顱","poj":"thâu-khak","t":5,"verse":"06:25"},{"h":"端來","poj":"phâng-lâi","t":5,"verse":"06:28"},{"h":"埋葬","poj":"bâi-chòng","t":5,"verse":"06:29"},{"h":"時間","poj":"sî-kan","t":5,"verse":"06:31"},{"h":"城市","poj":"siâⁿ-chhī","t":5,"verse":"06:33"},{"h":"時間","poj":"Sî-kan","t":5,"verse":"06:35"},{"h":"銀錢","poj":"gûn-á","t":5,"verse":"06:37"},{"h":"原來","poj":"Goân-lâi","t":5,"verse":"07:03"},{"h":"傳統","poj":"thoân-thóng","t":5,"verse":"07:03"},{"h":"銅器","poj":"tâng-khì","t":5,"verse":"07:04"},{"h":"違犯","poj":"ûi-hoān","t":5,"verse":"07:05"},{"h":"邪惡","poj":"siâ-ok","t":5,"verse":"07:22"},{"h":"隨即","poj":"Sûi-sî","t":5,"verse":"07:25"},{"h":"床上","poj":"chhn̂g--ni̍h","t":5,"verse":"07:30"},{"h":"地上","poj":"thô͘-kha","t":5,"verse":"08:06"},{"h":"人數","poj":"Jîn-sò͘","t":5,"verse":"08:09"},{"h":"瞎子","poj":"bông-jîn","t":5,"verse":"08:22"},{"h":"完全","poj":"oân-choân","t":5,"verse":"08:34"},{"h":"緣故","poj":"iân-kò͘","t":5,"verse":"08:35"},{"h":"淫亂","poj":"îm-loān","t":5,"verse":"08:38"},{"h":"降臨","poj":"lâi-lîm","t":5,"verse":"08:38"},{"h":"高山","poj":"koân soaⁿ","t":5,"verse":"09:02"},{"h":"帳棚","poj":"liâu-á","t":5,"verse":"09:05"},{"h":"圍著","poj":"ûi--teh","t":5,"verse":"09:14"},{"h":"群眾","poj":"Kûn-chiòng","t":5,"verse":"09:15"},{"h":"無論","poj":"Bô-lūn","t":5,"verse":"09:18"},{"h":"寧可","poj":"lêng-khó","t":5,"verse":"09:43"},{"h":"鹹味","poj":"kiâm-bī","t":5,"verse":"09:50"},{"h":"成為","poj":"chiâⁿ-chòe","t":5,"verse":"10:08"},{"h":"財寶","poj":"châi-pó","t":5,"verse":"10:21"},{"h":"財產","poj":"châi-sán","t":5,"verse":"10:22"},{"h":"田地","poj":"chhân-hn̂g","t":5,"verse":"10:29"},{"h":"來世","poj":"lâi-sè","t":5,"verse":"10:30"},{"h":"前面","poj":"thâu-chêng","t":5,"verse":"10:31"},{"h":"其他","poj":"Kî-tha","t":5,"verse":"10:41"},{"h":"瞎子","poj":"Bông-jîn","t":5,"verse":"10:51"},{"h":"騎著","poj":"khiâ--kè","t":5,"verse":"11:02"},{"h":"回答","poj":"hôe-tap","t":5,"verse":"11:06"},{"h":"懷疑","poj":"giâu-gî","t":5,"verse":"11:23"},{"h":"來的","poj":"lâi--ê","t":5,"verse":"11:30"},{"h":"不信","poj":"bô sìn","t":5,"verse":"11:31"},{"h":"籬笆","poj":"lî-pa","t":5,"verse":"12:01"},{"h":"園主","poj":"hn̂g-chú","t":5,"verse":"12:05"},{"h":"殺死","poj":"thâi-sí","t":5,"verse":"12:05"},{"h":"消滅","poj":"châu-bia̍t","t":5,"verse":"12:09"},{"h":"奇妙","poj":"kî-biāu","t":5,"verse":"12:11"},{"h":"羅馬","poj":"Lô-má","t":5,"verse":"12:14"},{"h":"皇帝","poj":"hông-tè","t":5,"verse":"12:14"},{"h":"錢幣","poj":"gûn-pè","t":5,"verse":"12:15"},{"h":"不嫁","poj":"bô kè","t":5,"verse":"12:25"},{"h":"不娶","poj":"bô chhōa","t":5,"verse":"12:25"},{"h":"盡心","poj":"choân-sim","t":5,"verse":"12:30"},{"h":"盡意","poj":"choân-ì","t":5,"verse":"12:30"},{"h":"盡力","poj":"choân-le̍k","t":5,"verse":"12:30"},{"h":"長袍","poj":"tn̂g-saⁿ","t":5,"verse":"12:38"},{"h":"刑罰","poj":"hêng-hoa̍t","t":5,"verse":"12:40"},{"h":"完成","poj":"oân-sêng","t":5,"verse":"13:04"},{"h":"民族","poj":"bîn-cho̍k","t":5,"verse":"13:08"},{"h":"逃跑","poj":"tô-cháu","t":5,"verse":"13:14"},{"h":"奇事","poj":"kî-sū","t":5,"verse":"13:22"},{"h":"時刻","poj":"sî-khek","t":5,"verse":"13:33"},{"h":"民眾","poj":"bîn-chiòng","t":5,"verse":"14:02"},{"h":"羊羔","poj":"iûⁿ-ko","t":5,"verse":"14:12"},{"h":"樓上","poj":"lâu-téng","t":5,"verse":"14:15"},{"h":"拿杯","poj":"phâng-poe","t":5,"verse":"14:23"},{"h":"唱詩","poj":"gîm-si","t":5,"verse":"14:26"},{"h":"祈求","poj":"kî-kiû","t":5,"verse":"14:35"},{"h":"走近","poj":"kiâⁿ-óa","t":5,"verse":"14:45"},{"h":"強盜","poj":"kiông-tō","t":5,"verse":"14:48"},{"h":"誣告","poj":"bû-kò","t":5,"verse":"14:56"},{"h":"全隊","poj":"choân-tūi","t":5,"verse":"15:16"},{"h":"王冠","poj":"ông-koan","t":5,"verse":"15:17"},{"h":"強迫","poj":"kiông-pek","t":5,"verse":"15:21"},{"h":"全地","poj":"choân-tōe","t":5,"verse":"15:33"},{"h":"哭泣","poj":"thî-khàu","t":5,"verse":"16:10"},{"h":"上帝","poj":"Siōng-tè","t":7,"verse":"01:01"},{"h":"道路","poj":"tō-lō͘","t":7,"verse":"01:03"},{"h":"後面","poj":"āu-bīn","t":7,"verse":"01:07"},{"h":"用水","poj":"ēng chúi","t":7,"verse":"01:08"},{"h":"父親","poj":"lāu-pē","t":7,"verse":"01:20"},{"h":"會堂","poj":"hōe-tn̂g","t":7,"verse":"01:21"},{"h":"附身","poj":"hū-sin","t":7,"verse":"01:23"},{"h":"大聲","poj":"tōa-siaⁿ","t":7,"verse":"01:26"},{"h":"事情","poj":"tāi-chì","t":7,"verse":"01:27"},{"h":"命令","poj":"bēng-lēng","t":7,"verse":"01:27"},{"h":"離開","poj":"lī-khui","t":7,"verse":"01:29"},{"h":"岳母","poj":"tiūⁿ-ḿ","t":7,"verse":"01:30"},{"h":"服事","poj":"sū-hāu","t":7,"verse":"01:31"},{"h":"病人","poj":"pīⁿ-lâng","t":7,"verse":"01:32"},{"h":"帶來","poj":"chhōa-lâi","t":7,"verse":"01:32"},{"h":"聚集","poj":"chū-chi̍p","t":7,"verse":"01:33"},{"h":"不准","poj":"m̄-chún","t":7,"verse":"01:34"},{"h":"能夠","poj":"ōe-tàng","t":7,"verse":"01:40"},{"h":"找祂","poj":"chhē I","t":7,"verse":"01:45"},{"h":"面前","poj":"bīn-chêng","t":7,"verse":"02:04"},{"h":"議論","poj":"gī-lūn","t":7,"verse":"02:06"},{"h":"地上","poj":"tōe-chiūⁿ","t":7,"verse":"02:10"},{"h":"後來","poj":"Āu-lâi","t":7,"verse":"02:15"},{"h":"罪人","poj":"chōe-jîn","t":7,"verse":"02:15"},{"h":"義人","poj":"gī-lâng","t":7,"verse":"02:17"},{"h":"大衛","poj":"Tāi-pi̍t","t":7,"verse":"02:25"},{"h":"生氣","poj":"siū-khì","t":7,"verse":"03:05"},{"h":"害死","poj":"hāi-sí","t":7,"verse":"03:06"},{"h":"上山","poj":"chiūⁿ-soaⁿ","t":7,"verse":"03:13"},{"h":"就是","poj":"chiū-sī","t":7,"verse":"03:16"},{"h":"母親","poj":"lāu-bú","t":7,"verse":"03:31"},{"h":"外面","poj":"gōa-bīn","t":7,"verse":"03:31"},{"h":"路旁","poj":"lō͘-piⁿ","t":7,"verse":"04:04"},{"h":"耳朵","poj":"hī-khang","t":7,"verse":"04:09"},{"h":"外人","poj":"gōa-lâng","t":7,"verse":"04:11"},{"h":"甚至","poj":"sīm-chì","t":7,"verse":"04:24"},{"h":"後來","poj":"āu-lâi","t":7,"verse":"04:28"},{"h":"樹枝","poj":"chhiū-ńg","t":7,"verse":"04:32"},{"h":"上船","poj":"chiūⁿ-chûn","t":7,"verse":"04:36"},{"h":"大風","poj":"tōa-hong","t":7,"verse":"04:37"},{"h":"順服","poj":"sūn-ho̍k","t":7,"verse":"04:41"},{"h":"地區","poj":"tōe-khu","t":7,"verse":"05:01"},{"h":"大群","poj":"tōa-kûn","t":7,"verse":"05:11"},{"h":"裡面","poj":"lāi-bīn","t":7,"verse":"05:12"},{"h":"兩千","poj":"nn̄g-chheng","t":7,"verse":"05:13"},{"h":"淹死","poj":"tū-sí","t":7,"verse":"05:13"},{"h":"按手","poj":"hōaⁿ-chhiú","t":7,"verse":"05:23"},{"h":"遭受","poj":"siū-tio̍h","t":7,"verse":"05:26"},{"h":"不但","poj":"m̄-nā","t":7,"verse":"05:26"},{"h":"老師","poj":"lāu-su","t":7,"verse":"05:35"},{"h":"不是","poj":"m̄-sī","t":7,"verse":"05:39"},{"h":"父母","poj":"pē-bú","t":7,"verse":"05:40"},{"h":"兩件","poj":"nn̄g niá","t":7,"verse":"06:09"},{"h":"內衣","poj":"lāi-saⁿ","t":7,"verse":"06:09"},{"h":"抖掉","poj":"pōaⁿ-tiāu","t":7,"verse":"06:11"},{"h":"砍頭","poj":"chām-thâu","t":7,"verse":"06:16"},{"h":"常常","poj":"tiāⁿ-tiāⁿ","t":7,"verse":"06:18"},{"h":"想要","poj":"siūⁿ-beh","t":7,"verse":"06:19"},{"h":"在座","poj":"chāi-chō","t":7,"verse":"06:22"},{"h":"認出","poj":"jīn-chhut","t":7,"verse":"06:33"},{"h":"上岸","poj":"chiūⁿ-hōaⁿ","t":7,"verse":"06:34"},{"h":"兩百","poj":"nn̄g-pah","t":7,"verse":"06:37"},{"h":"多少","poj":"jōa-chōe","t":7,"verse":"06:38"},{"h":"五十","poj":"gō͘-cha̍p","t":7,"verse":"06:40"},{"h":"五千","poj":"gō͘-chheng","t":7,"verse":"06:44"},{"h":"大家","poj":"tāi-ke","t":7,"verse":"06:50"},{"h":"海邊","poj":"hōaⁿ-piⁿ","t":7,"verse":"06:53"},{"h":"市場","poj":"chhī-tiûⁿ","t":7,"verse":"07:04"},{"h":"廁所","poj":"piān-só͘","t":7,"verse":"07:19"},{"h":"是非","poj":"sī-hui","t":7,"verse":"07:22"},{"h":"現在","poj":"hiān-chāi","t":7,"verse":"08:02"},{"h":"昏倒","poj":"hūn-tó","t":7,"verse":"08:03"},{"h":"遠的","poj":"hn̄g ê","t":7,"verse":"08:03"},{"h":"辯論","poj":"piān-lūn","t":7,"verse":"08:11"},{"h":"不再","poj":"bōe koh","t":7,"verse":"08:12"},{"h":"彼此","poj":"hō͘-siōng","t":7,"verse":"08:16"},{"h":"樹木","poj":"chhiū-á","t":7,"verse":"08:24"},{"h":"視力","poj":"sī-le̍k","t":7,"verse":"08:25"},{"h":"利益","poj":"lī-ek","t":7,"verse":"08:36"},{"h":"代價","poj":"tāi-kè","t":7,"verse":"08:37"},{"h":"不信","poj":"m̄-sìn","t":7,"verse":"09:19"},{"h":"帶來","poj":"chhōa--lâi","t":7,"verse":"09:20"},{"h":"不敢","poj":"m̄-káⁿ","t":7,"verse":"09:32"},{"h":"第一","poj":"tē-it","t":7,"verse":"09:35"},{"h":"犯罪","poj":"hoān-chōe","t":7,"verse":"09:42"},{"h":"頸項","poj":"ām-kún","t":7,"verse":"09:42"},{"h":"地獄","poj":"tōe-ge̍k","t":7,"verse":"09:43"},{"h":"兩隻","poj":"nn̄g lúi","t":7,"verse":"09:47"},{"h":"不死","poj":"bōe sí","t":7,"verse":"09:48"},{"h":"丈夫","poj":"Tiōng-hu","t":7,"verse":"10:02"},{"h":"丈夫","poj":"tiōng-hu","t":7,"verse":"10:12"},{"h":"也是","poj":"mā-sī","t":7,"verse":"10:12"},{"h":"偽證","poj":"gūi-chèng","t":7,"verse":"10:19"},{"h":"害死","poj":"hāi--sí","t":7,"verse":"10:34"},{"h":"外衣","poj":"gōa-saⁿ","t":7,"verse":"10:50"},{"h":"路上","poj":"lō͘--ni̍h","t":7,"verse":"11:08"},{"h":"樹枝","poj":"chhiū-oe","t":7,"verse":"11:08"},{"h":"樹上","poj":"chhiū-téng","t":7,"verse":"11:13"},{"h":"會再","poj":"ōe koh","t":7,"verse":"11:14"},{"h":"殿內","poj":"tiān-lāi","t":7,"verse":"11:15"},{"h":"萬民","poj":"bān-bîn","t":7,"verse":"11:17"},{"h":"辦法","poj":"pān-hoat","t":7,"verse":"11:18"},{"h":"投海","poj":"thiām-hái","t":7,"verse":"11:23"},{"h":"站著","poj":"khiā-teh","t":7,"verse":"11:25"},{"h":"另外","poj":"lēng-gōa","t":7,"verse":"12:04"},{"h":"有的","poj":"ū-ê","t":7,"verse":"12:05"},{"h":"重要","poj":"tiōng-iàu","t":7,"verse":"12:10"},{"h":"陷害","poj":"hām-hāi","t":7,"verse":"12:13"},{"h":"道理","poj":"tō-lí","t":7,"verse":"12:14"},{"h":"不必","poj":"m̄-bián","t":7,"verse":"12:14"},{"h":"娶妻","poj":"chhōa-bó͘","t":7,"verse":"12:20"},{"h":"後代","poj":"hō͘-tāi","t":7,"verse":"12:20"},{"h":"第一","poj":"Tē-it","t":7,"verse":"12:29"},{"h":"第二","poj":"Tē-jī","t":7,"verse":"12:31"},{"h":"問題","poj":"būn-tôe","t":7,"verse":"12:34"},{"h":"面向","poj":"bīn ǹg","t":7,"verse":"13:03"},{"h":"利用","poj":"lī-iōng","t":7,"verse":"13:06"},{"h":"地震","poj":"tōe-tāng","t":7,"verse":"13:08"},{"h":"議會","poj":"gī-hōe","t":7,"verse":"13:09"},{"h":"萬物","poj":"bān-mi̍h","t":7,"verse":"13:19"},{"h":"暴動","poj":"pō-tōng","t":7,"verse":"14:02"},{"h":"浪費","poj":"lōng-hùi","t":7,"verse":"14:04"},{"h":"盡力","poj":"chīn-la̍t","t":7,"verse":"14:08"},{"h":"大廳","poj":"tōa-thiaⁿ","t":7,"verse":"14:15"},{"h":"不是","poj":"M̄-sī","t":7,"verse":"14:19"},{"h":"不認","poj":"m̄ jīn","t":7,"verse":"14:30"},{"h":"陷入","poj":"hām-lo̍h","t":7,"verse":"14:38"},{"h":"第三","poj":"tē-saⁿ","t":7,"verse":"14:41"},{"h":"耳朵","poj":"hī-á","t":7,"verse":"14:47"},{"h":"帶去","poj":"chhōa-khì","t":7,"verse":"14:53"},{"h":"坐著","poj":"chē-teh","t":7,"verse":"14:54"},{"h":"辦理","poj":"pān-lí","t":7,"verse":"15:08"},{"h":"外袍","poj":"gōa-phàu","t":7,"verse":"15:17"},{"h":"罪名","poj":"chōe-chn̄g","t":7,"verse":"15:26"},{"h":"下午","poj":"ē-po͘","t":7,"verse":"15:33"},{"h":"另外","poj":"Lēng-gōa","t":7,"verse":"15:41"},{"h":"議員","poj":"gī-oân","t":7,"verse":"15:43"},{"h":"滾開","poj":"kō-khui","t":7,"verse":"16:03"},{"h":"定罪","poj":"tēng-chōe","t":7,"verse":"16:16"},{"h":"升天","poj":"chiūⁿ-thiⁿ","t":7,"verse":"16:19"},{"h":"一位","poj":"chi̍t ūi","t":8,"verse":"01:07"},{"h":"裂開","poj":"li̍h--khui","t":8,"verse":"01:10"},{"h":"實現","poj":"si̍t-hiān","t":8,"verse":"01:15"},{"h":"進去","poj":"ji̍p-khì","t":8,"verse":"01:21"},{"h":"各種","poj":"ta̍k-chióng","t":8,"verse":"01:32"},{"h":"各種","poj":"ta̍k-khoán","t":8,"verse":"01:34"},{"h":"目的","poj":"bo̍k-te̍k","t":8,"verse":"01:38"},{"h":"進城","poj":"ji̍p-siâⁿ","t":8,"verse":"01:45"},{"h":"獨一","poj":"To̍k-it","t":8,"verse":"02:07"},{"h":"吃飯","poj":"chia̍h-pn̄g","t":8,"verse":"02:15"},{"h":"麥田","poj":"be̍h-hn̂g","t":8,"verse":"02:23"},{"h":"麥穗","poj":"be̍h-sūi","t":8,"verse":"02:23"},{"h":"一個","poj":"chi̍t ê","t":8,"verse":"03:01"},{"h":"一隻","poj":"chi̍t chiah","t":8,"verse":"03:09"},{"h":"十二","poj":"cha̍p-jī","t":8,"verse":"03:14"},{"h":"下來","poj":"lo̍h--lâi","t":8,"verse":"03:22"},{"h":"滅亡","poj":"bia̍t-bông","t":8,"verse":"03:26"},{"h":"一群","poj":"chi̍t tīn","t":8,"verse":"03:32"},{"h":"石頭","poj":"chio̍h-thâu","t":8,"verse":"04:05"},{"h":"太陽","poj":"ji̍t-thâu","t":8,"verse":"04:06"},{"h":"六十","poj":"la̍k-cha̍p","t":8,"verse":"04:08"},{"h":"一百","poj":"chi̍t-pah","t":8,"verse":"04:08"},{"h":"一粒","poj":"chi̍t lia̍p","t":8,"verse":"04:31"},{"h":"下船","poj":"lo̍h-chûn","t":8,"verse":"05:02"},{"h":"睚魯","poj":"Ia̍p-ló͘","t":8,"verse":"05:22"},{"h":"別人","poj":"pa̍t-lâng","t":8,"verse":"05:37"},{"h":"進去","poj":"ji̍p--khì","t":8,"verse":"05:39"},{"h":"木匠","poj":"ba̍k-chhiūⁿ","t":8,"verse":"06:03"},{"h":"合法","poj":"ha̍p-hoat","t":8,"verse":"06:18"},{"h":"進來","poj":"ji̍p-lâi","t":8,"verse":"06:22"},{"h":"一半","poj":"chi̍t-pòaⁿ","t":8,"verse":"06:23"},{"h":"一間","poj":"chi̍t keng","t":8,"verse":"07:24"},{"h":"舌頭","poj":"chi̍h-kun","t":8,"verse":"07:35"},{"h":"吃飽","poj":"chia̍h pá","t":8,"verse":"08:04"},{"h":"拿去","poj":"the̍h-khì","t":8,"verse":"08:07"},{"h":"眼睛","poj":"ba̍k-chiu","t":8,"verse":"08:18"},{"h":"十二","poj":"Cha̍p-jī","t":8,"verse":"08:19"},{"h":"抬頭","poj":"gia̍h-thâu","t":8,"verse":"08:24"},{"h":"一次","poj":"chi̍t piàn","t":8,"verse":"08:25"},{"h":"一座","poj":"chi̍t chō","t":8,"verse":"09:02"},{"h":"下山","poj":"lo̍h-soaⁿ","t":8,"verse":"09:09"},{"h":"一杯","poj":"chi̍t poe","t":8,"verse":"09:41"},{"h":"一個","poj":"chi̍t-ê","t":8,"verse":"09:42"},{"h":"一隻","poj":"chi̍t lúi","t":8,"verse":"09:47"},{"h":"一體","poj":"chi̍t-thé","t":8,"verse":"10:08"},{"h":"別的","poj":"pa̍t-ê","t":8,"verse":"10:11"},{"h":"絕對","poj":"choa̍t-tùi","t":8,"verse":"10:15"},{"h":"生命","poj":"oa̍h-miā","t":8,"verse":"10:17"},{"h":"一項","poj":"chi̍t hāng","t":8,"verse":"10:21"},{"h":"駱駝","poj":"Lo̍k-tô","t":8,"verse":"10:25"},{"h":"僕人","poj":"po̍k-jîn","t":8,"verse":"10:44"},{"h":"服事","poj":"ho̍k-sāi","t":8,"verse":"10:45"},{"h":"贖回","poj":"sio̍k-hôe","t":8,"verse":"10:45"},{"h":"葉子","poj":"hio̍h-á","t":8,"verse":"11:13"},{"h":"一句","poj":"chi̍t-kù","t":8,"verse":"11:29"},{"h":"納稅","poj":"la̍p-sè","t":8,"verse":"12:14"},{"h":"律法","poj":"Lu̍t-hoat","t":8,"verse":"12:14"},{"h":"獨一","poj":"to̍k-it","t":8,"verse":"12:29"},{"h":"抓走","poj":"lia̍h-khì","t":8,"verse":"13:11"},{"h":"日子","poj":"ji̍t-chí","t":8,"verse":"13:17"},{"h":"學習","poj":"ha̍k-si̍p","t":8,"verse":"13:28"},{"h":"日出","poj":"ji̍t chhut","t":8,"verse":"13:35"},{"h":"玉瓶","poj":"ge̍k-pân","t":8,"verse":"14:03"},{"h":"拿去","poj":"The̍h--khì","t":8,"verse":"14:22"},{"h":"立約","poj":"li̍p-iok","t":8,"verse":"14:24"},{"h":"拿開","poj":"the̍h-khui","t":8,"verse":"14:36"},{"h":"肉體","poj":"jio̍k-thé","t":8,"verse":"14:38"},{"h":"每天","poj":"ta̍k-ji̍t","t":8,"verse":"14:49"},{"h":"下去","poj":"lo̍h-khì","t":8,"verse":"15:19"},{"h":"沒藥","poj":"bu̍t-io̍h","t":8,"verse":"15:23"},{"h":"撕成","poj":"li̍h-chòe","t":8,"verse":"15:38"},{"h":"白衣","poj":"pe̍h-saⁿ","t":8,"verse":"16:05"},{"h":"十一","poj":"cha̍p-it","t":8,"verse":"16:14"}];
+const toneOrder=[1,2,3,4,5,7,8],toneChange={1:7,2:1,3:2,4:8,5:7,7:3,8:4};
+const toneMarks=/[\u0300\u0301\u0302\u0304\u030d]/gu;
+const splitLetters=text=>text.match(/[^\p{M}]\p{M}*/gu)||[];
+const withoutTone=text=>text.normalize('NFD').replace(toneMarks,'').normalize('NFC');
+const accentIndex=text=>splitLetters(text).findIndex(c=>/[\u0300\u0301\u0302\u0304\u030d]/u.test(c.normalize('NFD')));
+const knownAccents=new Map();
+for(const row of corpus){const first=row.poj.split(/[-\s]+/u)[0],index=accentIndex(first);if(index>=0)knownAccents.set(withoutTone(first).toLowerCase(),index)}
+function nucleusIndex(text){
+ const marked=accentIndex(text);if(marked>=0)return marked;
+ const base=withoutTone(text).toLowerCase(),known=knownAccents.get(base);if(known!==undefined)return known;
+ const letters=splitLetters(base),plain=letters.map(c=>c.normalize('NFD')[0]);
+ // POJ keeps the upper-right dot of o͘; it is not a tone mark.
+ for(const vowel of ['o','a','e','u','i']){const i=plain.indexOf(vowel);if(i>=0)return i}
+ const n=plain.indexOf('n');return n>=0?n:Math.max(0,plain.indexOf('m'));
+}
+function setAnimationPojChangeRow(w){
+ const row=$('animationPojChangeRow');if(!row||!w)return;
+ row.replaceChildren();
+ const makePart=(first,side)=>{
+  const part=document.createElement('span');part.className='poj-change-part poj-change-'+side;
+  const letters=splitLetters(first);const vowel=nucleusIndex(first);
+  letters.forEach((letter,i)=>{
+   if(i===vowel){const mark=document.createElement('span');mark.className='poj-nucleus';mark.textContent=letter;part.append(mark)}
+   else part.append(document.createTextNode(letter));
+  });
+  part.append(document.createTextNode((w.separator||'-')+w.b));
+  return part;
+ };
+ const original=makePart(w.a,'original');
+ const arrow=document.createElement('span');arrow.className='poj-change-arrow';arrow.textContent='→';
+ const result=makePart(w.out,'result');
+ const spacer=document.createElement('span');spacer.className='poj-change-spacer';spacer.textContent='→';
+ row.append(original,arrow,result,spacer);
+ const selectedButton=document.querySelector('#animation #words button[aria-pressed="true"]');
+ const tabButton=$('tab-animation');
+ if(selectedButton)row.style.setProperty('--animation-word-button-color',getComputedStyle(selectedButton).backgroundColor);
+ if(tabButton)row.style.setProperty('--animation-tab-button-color',getComputedStyle(tabButton).backgroundColor);
+ if(tabButton)row.style.setProperty('--animation-tab-font-size',getComputedStyle(tabButton).fontSize);
+}
+function respell(first,tone){const letters=splitLetters(withoutTone(first)),index=nucleusIndex(first),mark={2:'́',3:'̀',5:'̂',7:'̄',8:'̍'}[tone]||'';letters[index]=(letters[index]+mark).normalize('NFC');return letters.join('')}
+function detectTone(text){const n=text.normalize('NFD');for(const [mark,t]of [['́',2],['̀',3],['̂',5],['̄',7],['̍',8]])if(n.includes(mark))return t;return /[ptkh]$/i.test(text)?4:1}
+const pools=toneOrder.map(t=>corpus.filter(row=>row.t===t));
+const words=[];
+function randomizeWords(){
+ for(let i=0;i<toneOrder.length;i++){
+  const pool=pools[i],previous=words[i];let choices=pool.filter(row=>row.h!==previous?.h);if(!choices.length)choices=pool;
+  const row=choices[Math.floor(Math.random()*choices.length)],parts=row.poj.split(/[-\s]+/u),a=parts[0],b=parts[1],to=toneChange[row.t];
+  words[i]={h:row.h,a,b,t:row.t,u:detectTone(b),to,out:respell(a,to),source:row.poj,separator:row.poj.slice(a.length,row.poj.length-b.length),verse:row.verse,n:`「${row.h[0]}」第 ${row.t} 調變為第 ${to} 調；第二音節不變。`};
+ }
+ for(const rowId of ['words','practiceWords'])[...$(rowId).children].forEach((button,i)=>{button.textContent=words[i].h;button.setAttribute('aria-label',`第 ${words[i].t} 調：${words[i].h}（${words[i].source}）`)})
+}
+const ruleTones=[1,7,3,2,5,4,8];
+const ruleWords=ruleTones.map(t=>{
+ const row=corpus.find(row=>row.t===t),[a,b]=row.poj.split(/[-\s]+/u),to=toneChange[t];
+ return {h:row.h,a,b,t,u:detectTone(b),to,out:respell(a,to),source:row.poj,separator:row.poj.slice(a.length,row.poj.length-b.length),verse:row.verse};
+});
+const ruleSamplePools={"1":["a","e","i","o","o͘","u","ai","au","ia","iau","io","io͘","iu","oa","oai","oe","ui","ng"],"2":["á","é","í","ó","ó͘","ú","ái","áu","iá","iáu","ió","ió͘","iú","oá","oái","oé","uí","ńg"],"3":["à","è","ì","ò","ò͘","ù","ài","àu","ià","iàu","iò","iò͘","iù","oà","oài","oè","uì","ǹg"],"4":["ah","eh","ih","oh","o͘h","uh","aih","auh","iah","iauh","ioh","iuh","oah","oeh","uih"],"5":["â","ê","î","ô","ô͘","û","âi","âu","iâ","iâu","iô","iô͘","iû","oâ","oâi","oê","uî","n̂g"],"7":["ā","ē","ī","ō","ō͘","ū","āi","āu","iā","iāu","iō","iō͘","iū","oā","oāi","oē","uī","n̄g"],"8":["a̍h","e̍h","i̍h","o̍h","o̍͘h","u̍h","a̍ih","a̍uh","ia̍h","ia̍uh","io̍h","iu̍h","oa̍h","oe̍h","ui̍h"]};
+let ruleSample={a:'a',out:'ā'};
+function ruleSampleOutput(text,target){
+ const key=withoutTone(text);
+ return ruleSamplePools[target].find(item=>withoutTone(item)===key);
+}
+function pickRuleSample(index){
+ const w=ruleWords[index],pool=ruleSamplePools[w.t],choices=pool.filter(item=>item!==ruleSample.a);
+ const a=choices[Math.floor(Math.random()*choices.length)];
+ ruleSample={a,out:ruleSampleOutput(a,w.to)};
+}
+let ruleSelected=0;
+function currentWord(){return activeMode==='principles'?ruleWords[ruleSelected]:words[selected]}
+const $=id=>document.getElementById(id),ns='http://www.w3.org/2000/svg';
+const contours={1:[5,5],2:[5,1],3:[2,1],4:[2,1],5:[2,4],7:[3,3],8:[4,4]};
+let selected=0,p=0,frame=0,running=false,last=0,activeMode='animation';
+let measuringLayout=false;
+function curve(t,left){const c=contours[t],short=t===4||t===8;return [left,70+(5-c[0])*66,left+(short?115:190),70+(5-c[1])*66]}
+function path(c){return `M ${c[0]} ${c[1]} L ${c[2]} ${c[3]}`}
+for(let v=1;v<=5;v++){const y=17.5+(5-v)*33;const l=document.createElementNS(ns,'line');for(const [a,b]of Object.entries({x1:58,x2:662,y1:y,y2:y,stroke:'#3b3730','stroke-width':1.5}))l.setAttribute(a,b);$('grid').append(l);const t=document.createElementNS(ns,'text');t.setAttribute('x',20);t.setAttribute('y',y+6);t.setAttribute('fill','#aaa396');t.setAttribute('font-size',19);t.textContent=v;$('grid').append(t)}
+randomizeWords();
+for(const rowId of ['words','practiceWords'])words.forEach((w,i)=>{const b=document.createElement('button');b.textContent=w.h;b.onclick=()=>choose(i,rowId==='practiceWords'?'practice':'animation');$(rowId).append(b)});
+ruleWords.forEach((w,i)=>{const b=document.createElement('button');b.textContent=`${w.t} → ${w.to}`;b.onclick=()=>chooseRule(i);$('principlesWords').append(b)});
+function firstCurve(w){return w.t===8?[175,70,175,169]:w.t===2?[121.5625,276.25,228.4375,127.75]:w.t===3?firstCurve({t:2}).map((n,i)=>i%2?404-n:n):w.t===7?[80,202,270,202]:curve(w.t,80)}
+function rotateLine(a,radians){const cx=(a[0]+a[2])/2,cy=(a[1]+a[3])/2,c=Math.cos(radians),s=Math.sin(radians);return a.map((n,i)=>i%2?cy+(a[i-1]-cx)*s+(n-cy)*c:cx+(n-cx)*c-(a[i+1]-cy)*s)}
+function roofPath(apexY){return `M 80 202 L 175 ${apexY} L 270 202`}
+function paintFirstLabel(w){
+ if(activeMode==='principles')w=ruleSample;
+ const label=$('firstLabel'),text=p>=.5?w.out:w.a;label.textContent=text;if(p<.5)return;
+ const letters=splitLetters(text),index=activeMode==='principles'&&accentIndex(text)>=0?accentIndex(text):nucleusIndex(w.a);
+ label.innerHTML=letters.map((letter,i)=>i===index?`<span class="changed-vowel">${letter}</span>`:letter).join('');
+}
+function ruleToneSymbol(tone){
+ const symbols={2:'M 15 32 L 45 8',3:'M 15 8 L 45 32',5:'M 10 30 L 30 10 L 50 30',7:'M 10 20 L 50 20',8:'M 30 8 L 30 32'};
+ if(!symbols[tone])return `<span class="rule-tone-blank" role="img" aria-label="第 ${tone} 調：空白"></span>`;
+ return `<svg class="rule-tone-symbol" viewBox="0 0 60 40" role="img" aria-label="第 ${tone} 調聲調符號"><path d="${symbols[tone]}"/></svg>`;
+}
+function paintSpelling(w){
+ const row=$('poj');
+ if(activeMode==='principles'||activeMode==='animation'){
+  row.className='poj poj-double rule-tone-pair'+([1,7,3,5,4].includes(w.t)?' is-large':'')+(w.t===2?' is-double':'')+([1,7,3,5,4,8].includes(w.t)?' is-raised-small':'');
+  row.innerHTML=ruleToneSymbol(w.t)+'<span class="rule-tone-arrow" role="img" aria-label="→"><span class="arrow-spacer" aria-hidden="true">→</span><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M 5 30 H 55 M 41 16 L 55 30 L 41 44"/></svg></span><span class="rule-target-symbol">'+ruleToneSymbol(w.to)+'</span>';
+ }else{row.className='poj poj-double';row.textContent=`${w.source} → ${w.out}${w.separator}${w.b}`}
+}
+function paintRuleGraphSample(){
+ const sample=$('ruleOneGraphSample');
+ sample.hidden=activeMode!=='principles'&&activeMode!=='animation';
+ if(sample.hidden)return;
+ const displaySample=activeMode==='animation'?words[selected]:ruleSample;
+ sample.textContent=p>=.5?displaySample.out:displaySample.a;
+ if(activeMode==='animation'){
+  const length=Array.from(sample.textContent).length;
+  const rowWidth=$('toneGraphWrap').getBoundingClientRect().width;
+  const maxFont=Math.min(8*parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--rule-button-size')||'15'),rowWidth*0.24);
+  const font=Math.min(maxFont,rowWidth*.43/Math.max(1,length*.57));
+  $('lessonContent').style.setProperty('--animation-sample-fit',Math.max(23,font)+'px');
+ }
+ sample.className='rule-one-graph-sample'+(p>=.5?' is-changed':'');
+}
+
+function positionPrinciplesBottomLabel(){
+ const labels=document.querySelector('#lessonContent .syllable-labels');
+ const lesson=$('lessonContent');
+ const graph=$('toneGraphWrap');
+ const svg=graph?.querySelector('svg');
+ const first=$('firstLabel');
+ if(!labels||!lesson||!graph||!svg||!first)return;
+ if(activeMode!=='principles'&&activeMode!=='animation'){
+  labels.style.position='';labels.style.top='';labels.style.left='';labels.style.right='';
+  return;
+ }
+ const lessonBox=lesson.getBoundingClientRect();
+ const graphBox=graph.getBoundingClientRect();
+ const svgBox=svg.getBoundingClientRect();
+ const viewBox=svg.viewBox.baseVal;
+ const principlesTab=$('tab-principles');
+ const rowH=(principlesTab?.getBoundingClientRect().height)||60;
+ const firstLineY=17.5+(5-1)*33;
+ const firstLinePx=(firstLineY-viewBox.y)*svgBox.height/viewBox.height;
+ const targetCenter=(graphBox.top-lessonBox.top)+firstLinePx+rowH/2;
+ const labelsHeight=labels.getBoundingClientRect().height || first.getBoundingClientRect().height || 0;
+ const position=targetCenter-labelsHeight/2;
+ if(activeMode==='animation')lesson.style.setProperty('--reference-bottom-label-top',position+'px');
+ else labels.style.top=position+'px';
+}
+function paint(){if(measuringLayout)return;const w=currentWord(),a=firstCurve(w),b=curve(w.to,80),ease=p*p*(3-2*p);$('changing').setAttribute('opacity',1);if(w.t===8){const travel=Math.max(0,Math.min(1,(p-.15)/.85)),drop=travel*travel*(3-2*travel)*320;$('changing').setAttribute('clip-path','url(#plotClip)');$('changing').setAttribute('d',path([175,70+drop,175,169+drop]))}else if(w.t===4){const travel=Math.max(0,Math.min(1,(p-.15)/.85)),drop=travel*travel*(3-2*travel),bottomY=70+198*drop;$('changing').setAttribute('clip-path','url(#plotClip)');$('changing').setAttribute('opacity',p<=.15?0:1);$('changing').setAttribute('d',path([175,bottomY-80,175,bottomY]))}else if(w.t===5){$('changing').setAttribute('clip-path','none');$('changing').setAttribute('d',roofPath(107+95*ease))}else if(w.t===3||w.t===7){$('changing').setAttribute('clip-path','none');$('changing').setAttribute('d',path(rotateLine(a,(w.t===7?Math.PI/4:-2*Math.atan2(a[3]-a[1],a[2]-a[0]))*ease)))}else if(w.t===2){const travel=Math.max(0,(p-.2)/.8),offset=travel*travel*(3-2*travel);$('changing').setAttribute('d',path(a.map((n,i)=>n+(i%2?500:-360)*offset)));$('changing').setAttribute('clip-path','url(#plotClip)')}else{$('changing').setAttribute('clip-path','none');$('changing').setAttribute('d',path(a.map((n,i)=>n+(b[i]-n)*ease)))}paintFirstLabel(w);paintSpelling(w);paintRuleGraphSample()}
+let refreshTimer=0;
+function stopRefresh(){clearTimeout(refreshTimer);refreshTimer=0}
+function scheduleRefresh(){
+ stopRefresh();
+ const refreshMode=activeMode,refreshIndex=selected;
+ refreshTimer=setTimeout(()=>{
+  refreshTimer=0;
+  if(activeMode!==refreshMode)return;
+  if(refreshMode==='principles'){chooseRule(ruleSelected);return;}
+  // Pick one of the other six columns, not just a new word in the same column.
+  const otherColumns=words.map((_,i)=>i).filter(i=>i!==refreshIndex);
+  const nextIndex=otherColumns[Math.floor(Math.random()*otherColumns.length)];
+  randomizeWords();
+  if(refreshMode==='practice'&&!$('quizArea').hidden){
+   const position=order.indexOf(nextIndex);
+   [order[q],order[position]]=[order[position],order[q]];
+  }
+  choose(nextIndex,refreshMode,false);
+ },Number($('speed').value));
+}
+function halt(){cancelAnimationFrame(frame);running=false}
+function tick(now){if(!running)return;if(measuringLayout){last=now;frame=requestAnimationFrame(tick);return;}if(last)p=Math.min(1,p+(now-last)/Number($('speed').value));last=now;paint();if(p<1)frame=requestAnimationFrame(tick);else running=false}
+function play(){cancelAnimationFrame(frame);running=true;last=0;frame=requestAnimationFrame(tick)}
+function fixedPath(w){
+ if(activeMode==='principles'&&[7,3,2,8].includes(w.t))return '';
+ const tone=detectTone(w.b);
+ if(tone===1||tone===4)return '';
+ if(tone===5){const cx=515,cy=202,a=[420,249.5,515,154.5,610,249.5].map((n,i)=>{const center=i%2?cy:cx;return center+(n-center)*.875});return `M ${a[0]} ${a[1]} L ${a[2]} ${a[3]} L ${a[4]} ${a[5]}`}
+ // Use the same original tone-symbol geometry as the first syllable,
+ // translated to the second column; the final syllable keeps its tone.
+ return path(firstCurve({t:tone}).map((n,i)=>i%2?n+(tone===8?66:0):n+340));
+}
+function syncWordButtons(){for(const rowId of ['words','practiceWords'])[...$(rowId).children].forEach((b,j)=>b.setAttribute('aria-pressed',j===selected));[...$('principlesWords').children].forEach((b,j)=>b.setAttribute('aria-pressed',j===ruleSelected))}
+// 只在「變音原則」將第4線（含）以下移動；第5線維持原位。
+const RULE_SHIFT=153; // 約 90px（430px 的 iPhone 15 Plus 縮放寬度）
+function adjustFourthLine(){
+ const svg=$('toneGraphWrap').querySelector('svg'),grid=$('grid');
+ const on=activeMode==='principles'||activeMode==='animation';
+ if(!svg || !grid)return;
+ svg.setAttribute('viewBox',activeMode==='practice'?'0 0 680 157.5':`0 0 680 ${157.5+RULE_SHIFT}`);svg.style.overflow=on?'visible':'';
+ // 五條線與線號改為同一組移動，移除舊版只移動部分線條的位移。
+ for(const node of grid.children)node.removeAttribute('transform');
+ const defs=svg.querySelector('defs');
+ let cTop=$('principlesClipTop'),cBot=$('principlesClipBottom');
+ if(!cTop){cTop=document.createElementNS(ns,'clipPath');cTop.id='principlesClipTop';cTop.setAttribute('clipPathUnits','userSpaceOnUse');
+  cTop.innerHTML='<rect x="-1000" y="-1000" width="3000" height="1050"/>';defs.append(cTop);
+  cBot=document.createElementNS(ns,'clipPath');cBot.id='principlesClipBottom';cBot.setAttribute('clipPathUnits','userSpaceOnUse');
+  cBot.innerHTML='<rect x="-1000" y="50.5" width="3000" height="2000"/>';defs.append(cBot);
+ }
+ const lower=$('principlesLowerArt');lower.style.display=on?'':'none';
+ for(const id of ['original','changing','fixed']){
+  const node=$(id);if(on)node.setAttribute('clip-path','url(#principlesClipTop)');else node.removeAttribute('clip-path');
+ }
+ if(on){lower.setAttribute('transform',`translate(0 ${RULE_SHIFT})`);
+  lower.querySelectorAll('use').forEach(u=>u.setAttribute('clip-path','url(#principlesClipBottom)'));
+ }else lower.removeAttribute('transform');
+ moveFiveStaffLinesUp();
+}
+// 對齊「7 → 3」第一音動畫符號的中心：五條線及線號同步移動，線距不變。
+function moveFiveStaffLinesUp(){
+ const grid=$('grid');
+ if(!grid)return;
+ if(activeMode!=='principles'&&activeMode!=='animation'){
+  grid.removeAttribute('transform');
+  return;
+ }
+ // 第 7 調原音符號是從 (80,202) 到 (270,202) 的水平線。
+ // 原音圖層 transform="translate(87.5 -17.5) scale(.5)"。
+ const seventhTone=firstCurve({t:7});
+ const symbolCenterY=-17.5+0.5*(seventhTone[1]+seventhTone[3])/2;
+ // 五線從上到下依序為第 5,4,3,2,1 線；第 3 線原始 y=83.5。
+ const thirdLineY=17.5+(5-3)*33;
+ const delta=symbolCenterY-thirdLineY;
+ grid.setAttribute('transform',`translate(0 ${delta})`);
+ // 淡藍色右側白話字的中心依實際 SVG viewBox 比例精確對齊第 3 線。
+ const sample=$('ruleOneGraphSample');
+ const graph=$('toneGraphWrap');
+ const svg=graph?.querySelector('svg');
+ if(sample && graph && svg){
+   const svgBox=svg.getBoundingClientRect();
+   const graphBox=graph.getBoundingClientRect();
+   const viewBox=svg.viewBox.baseVal;
+   const y=(thirdLineY+delta-viewBox.y)*svgBox.height/viewBox.height;
+   sample.style.top=(svgBox.top-graphBox.top+y)+'px';
+   sample.style.transform='translate(-50%,-50%)';
+ }
+}
+function adjustPrinciplesGap(){
+ const graph=$('toneGraphWrap');graph.style.marginTop='0px';
+ if(activeMode!=='principles'&&activeMode!=='animation')return;
+ if(!graph.getBoundingClientRect)return;
+ const box=graph.getBoundingClientRect(),buttons=$('principlesWords').getBoundingClientRect();
+ const gap=Math.max(0,box.top+box.width*17.5/680-buttons.bottom);
+ graph.style.marginTop='0px';
+}
+if(typeof window!=='undefined')onStableWidthResize(()=>{adjustPrinciplesGap();moveFiveStaffLinesUp();positionPrinciplesBottomLabel()});
+// 僅手機版「字詞動畫」最下列，將「第 4 調」顯示為「4 調」。
+function updateMobileAnimationToneLabels(){
+ const compact=activeMode==='animation'&&window.matchMedia('(max-width:520px)').matches;
+ for(const id of ['firstTone','lastTone']){
+  const el=$(id);if(!el||!el.textContent)return;
+  el.textContent=el.textContent.replace(/^第\s*(?=\d+\s*調)/,'');
+  if(!compact)el.textContent='第 '+el.textContent;
+ }
+}
+onStableWidthResize(updateMobileAnimationToneLabels);
+function showLesson(w){if(activeMode==='animation')setAnimationPojChangeRow(w);$('poj').className='poj poj-double';$('lastLabel').textContent=activeMode==='principles'?'':w.b;$('original').setAttribute('d',w.t===4||w.t===8?'':w.t===5?roofPath(107):path(firstCurve(w)));$('fixed').setAttribute('d',fixedPath(w));$('firstTone').textContent=`第 ${w.t} 調 → 第 ${w.to} 調`;$('lastTone').textContent=`第 ${w.u} 調（不變）`;$('verseSource').textContent='馬可福音'+w.verse;$('animationMobileVerseRow').textContent='馬可福音'+w.verse;updateMobileAnimationToneLabels();$('graphDesc').textContent=`${w.h}：第一字第${w.t}調變為第${w.to}調，第二字第${w.u}調保持不變。`;paint();moveFiveStaffLinesUp();positionPrinciplesBottomLabel();play();adjustPrinciplesGap();}
+function chooseRule(i){halt();stopRefresh();ruleSelected=i;pickRuleSample(i);p=0;tab('principles');showLesson(ruleWords[i]);scheduleRefresh()}
+function choose(i,mode=activeMode,syncQuiz=true){if(mode==='principles'){chooseRule(i);return}halt();selected=i;p=0;tab(mode);showLesson(words[i]);if(mode==='practice'){if(syncQuiz)restart(i);else if(!$('quizArea').hidden)question()}scheduleRefresh()}
+$('speed').onchange=()=>{p=0;paint();play();scheduleRefresh()};document.addEventListener('visibilitychange',()=>{if(document.hidden)halt();else{p=0;paint();play();if(!refreshTimer)scheduleRefresh()}});
+function tab(name){$('toneDescriptions').style.display=name==='principles'?'none':'';$('lessonContent').className=(name==='principles'||name==='animation')?'principles-content':'';$(name==='principles'?'principlesLessonHost':'animationLessonHost').append($('lessonContent'));activeMode=name;for(const id of ['principles','animation','practice']){$(id).hidden=id!==name;$('tab-'+id).setAttribute('aria-selected',id===name)}syncWordButtons();updateMobileAnimationToneLabels();adjustFourthLine()}
+for(const name of ['principles','animation','practice'])$('tab-'+name).onclick=()=>{if(name==='principles')chooseRule(ruleSelected);else choose(selected,name);paint()};
+let order=[],q=0,score=0,answered=false,quizWords=[],currentCorrect=false;
+function restart(preferred){quizWords=words.map(w=>({...w}));order=words.map((_,i)=>i);for(let i=order.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]]}if(Number.isInteger(preferred))order=[preferred,...order.filter(i=>i!==preferred)];q=0;score=0;$('quizArea').hidden=false;$('result').hidden=true;question()}
+function confusingAnswers(w){
+ const similar={1:[7,2,3,5,8],2:[3,5,7,1],3:[2,5,7,1],4:[7,2,3,5,8],5:[2,3,7,1],7:[1,2,3,5],8:[1,7,2,3]};
+ const candidates=[...new Set(similar[w.to].map(t=>respell(w.a,t)))].filter(text=>text!==w.out);
+ for(let i=candidates.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[candidates[i],candidates[j]]=[candidates[j],candidates[i]]}
+ return candidates.slice(0,3);
+}
+function answerMarkup(text,source){const letters=splitLetters(text),marked=accentIndex(text),index=marked>=0?marked:nucleusIndex(source);return letters.map((letter,i)=>i===index?`<span class="answer-vowel">${letter}</span>`:letter).join('')}
+function question(){
+ answered=false;currentCorrect=false;selected=order[q];quizWords[selected]={...words[selected]};const w=quizWords[selected];syncWordButtons();p=0;paint();play();
+ $('question').replaceChildren();const pojLine=document.createElement('div');pojLine.className='quiz-poj-line';const first=document.createElement('span');first.className='quiz-first-syllable';first.textContent=w.a;pojLine.append(first,document.createTextNode(w.separator+w.b+' → ？'));const hanziLine=document.createElement('div');hanziLine.className='quiz-hanzi-line';hanziLine.textContent=w.h;$('question').append(hanziLine,pojLine);$('practiceVerseSource').textContent='馬可福音'+w.verse;$('question').style.whiteSpace='pre-line';$('answers').replaceChildren();$('feedback').textContent='';$('next').disabled=true;$('next').textContent=q===words.length-1?'看成績 →':'下一題 →';
+ const correctIndex=Math.floor(Math.random()*4),options=confusingAnswers(w);options.splice(correctIndex,0,w.out);
+ for(const [index,candidate]of options.entries()){const b=document.createElement('button');b.innerHTML=answerMarkup(candidate,w.a);b.setAttribute('aria-label',candidate);b.onclick=()=>{
+  if(answered)return;answered=true;currentCorrect=index===correctIndex;
+  if(currentCorrect){b.className='correct';$('feedback').textContent='答對了！'+w.n}else{b.className='wrong';$('feedback').textContent=`正確是 ${w.out}。`+w.n}
+  [...$('answers').children].forEach((el,i)=>{if(i===correctIndex)el.className='correct';el.disabled=true});$('next').disabled=false;
+ };$('answers').append(b)}
+ scheduleRefresh();
+}
+$('hint').onclick=()=>{const w=quizWords[order[q]];$('feedback').textContent=w.n};$('next').onclick=()=>{if(!answered)return;if(currentCorrect)score++;q++;if(q<words.length)question();else{$('quizArea').hidden=true;$('result').hidden=false;$('result').innerHTML=`<h2>完成了！答對 ${score} / ${words.length} 題</h2><p>回到動畫，再看看還不熟悉的變調。</p><button class="primary" id="again">再練一次</button>`;$('again').onclick=restart}};restart();choose(0);
+
+// 字詞動畫：僅下移五線圖下方的「白話字列」與「音調／章節列」。
+// 使用實際的「變音原則」欄位高度作為三倍位移基準。
+(function(){
+  function updateAnimationLowerRowsOffset(){
+    const tab=document.getElementById('tab-principles');
+    const lesson=document.getElementById('lessonContent');
+    if(tab&&lesson){
+      const h=tab.getBoundingClientRect().height;
+      if(h>0)lesson.style.setProperty('--animation-tab-row-height',h+'px');
+    }
+  }
+  updateAnimationLowerRowsOffset();
+  onStableWidthResize(updateAnimationLowerRowsOffset);
+})();
+
+// 使用共用 CSS 版面，不再為測量位置而在背景切換分頁。
+function alignAnimationPojHalfTabHeight(){
+ const t=document.getElementById('tab-principles');
+ const host=document.getElementById('lessonContent');
+ if(t&&host)host.style.setProperty('--animation-poj-down',(t.getBoundingClientRect().height*0.6)+'px');
+}
+onStableWidthResize(alignAnimationPojHalfTabHeight);
+requestAnimationFrame(alignAnimationPojHalfTabHeight);
+
+// 在 SVG 縮放下，維持字詞動畫最下三欄的實際顯示字級：28.38、22.79、28.38px。
+(function(){
+ const svg=document.getElementById('toneDescriptions');
+ const root=document.getElementById('lessonContent');
+ if(!svg||!root)return;
+ function updateAnimationBottomFontSizes(){
+  const w=svg.getBoundingClientRect().width;
+  if(w<=0)return;
+  const scale=w/680;
+  root.style.setProperty('--animation-bottom-left-svg-size',(28.38/scale)+'px');
+  root.style.setProperty('--animation-bottom-middle-svg-size',(22.79/scale)+'px');
+  root.style.setProperty('--animation-bottom-right-svg-size',(28.38/scale)+'px');
+ }
+ new ResizeObserver(updateAnimationBottomFontSizes).observe(svg);
+ onStableWidthResize(updateAnimationBottomFontSizes);
+ requestAnimationFrame(updateAnimationBottomFontSizes);
+})();
+
+// 底部兩列採正常文流；捲動時不再更動高度或補空白。
+</script>
+<script>
+/* Desktop-only, page-height-aware sizing. No adjustments to phone or tablet UI. */
+(function(){
+  const root=document.querySelector('main');
+  if(!root) return;
+  let pending=false;
+  function desktop(){return window.innerWidth>=901 && window.matchMedia('(pointer: fine)').matches;}
+  function fit(){
+    pending=false;
+    if(!desktop()) {root.style.zoom='';document.body.style.overflowY='';return;}
+    // Calculate unscaled content height after any page/tab update.
+    root.style.zoom='1';
+    const available=Math.max(300,window.innerHeight-12);
+    const unscaled=root.getBoundingClientRect().height;
+    const target=Math.max(.35,Math.min(1,available/Math.max(1,unscaled)));
+    root.style.zoom=String(target);
+  }
+  function schedule(){if(pending)return;pending=true;requestAnimationFrame(()=>requestAnimationFrame(fit));}
+  document.querySelectorAll('[role="tab"], #principlesWords, #words, #practiceWords, #speed, #answers, #nextQuestion, #nextBtn').forEach(el=>el.addEventListener('click',schedule));
+  window.addEventListener('resize',schedule);
+  window.addEventListener('load',schedule);
+  document.addEventListener('DOMContentLoaded',schedule);
+  // Watch the three panels' visibility so any script-driven switch is fitted too.
+  const observer=new MutationObserver(records=>{if(records.some(r=>r.attributeName==='hidden' || r.attributeName==='style' && r.target.matches?.('[role="tabpanel"]')))schedule();});
+  document.querySelectorAll('[role="tabpanel"]').forEach(el=>observer.observe(el,{attributes:true,attributeFilter:['hidden','style']}));
+  schedule();
+})();
+</script>
+</body></html>
